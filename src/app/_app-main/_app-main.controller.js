@@ -1,4 +1,4 @@
-angular.module(absConfig.appRootModuleName).controller('RootController', rootController);
+angular.module(dmConfig.appRootModuleName).controller('RootController', rootController);
 
 rootController.$inject = ['$scope', '$window'];
 function rootController($scope, $window) {

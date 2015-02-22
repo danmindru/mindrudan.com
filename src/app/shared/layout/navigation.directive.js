@@ -1,4 +1,4 @@
-angular.module('abs.coreLayout').directive('appNavigation', appNavigation);
+angular.module('dm.coreLayout').directive('appNavigation', appNavigation);
 
 function appNavigation(){
   return {

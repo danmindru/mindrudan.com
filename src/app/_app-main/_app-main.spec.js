@@ -3,20 +3,20 @@ describe('Root Application Module:', function(){
       scope;
 
   beforeEach(function(){
-    module('abs');
+    module('dm');
   });
 
   describe('Root Config:', function(){
     it('should expose a pushAfterBootstrap method', function(){
-      expect(absConfig.pushAfterBootstrap).toBeTruthy();
+      expect(dmConfig.pushAfterBootstrap).toBeTruthy();
     });
 
     it('should expose a appRootModuleName variable', function(){
-      expect(absConfig.appRootModuleName).toBeTruthy();
+      expect(dmConfig.appRootModuleName).toBeTruthy();
     });
 
     it('should expose a appMainVendorDependencies variable', function(){
-      expect(absConfig.appMainVendorDependencies).toBeTruthy();
+      expect(dmConfig.appMainVendorDependencies).toBeTruthy();
     });
   });
 
