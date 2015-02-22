@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <section class="container-fluid">
+    <p class="navbar-text">
+      <strong>Demo application&#0153;</strong>
+    </p>
+
+    <ul class="nav navbar-nav">
+      <li ui-sref-active="active">
+        <a href ui-sref="home">
+          Home
+        </a>
+      </li>
+
+      <li ui-sref-active="active">
+        <a href ui-sref="providerIndex">
+          Providers
+        </a>
+      </li>
+
+      <li ui-sref-active="active">
+        <a href ui-sref="customerIndex">
+          Customers
+        </a>
+      </li>
+
+      <li ui-sref-active="active">
+        <a href ui-sref="about">
+          About
+        </a>
+      </li>
+    </ul>
+
+    <p class="navbar-text pull-right">
+      Copyright © <span ng-bind="::vm.currentDate"></span> <strong><a href="https://github.com/danmindru/angular-boilerplate-study" target="_blank">Angular boilerplate study</a></strong>
+    </p>
+  </section>
+</nav>

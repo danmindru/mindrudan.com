@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-ng-controller="RootController as root">
+<head>
+  <title data-ng-bind="root.htmlTitle">Dan Mindru</title>
+
+  <!-- General META -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Semantic META -->
+  <meta name="description" content="Sold my soul to fadeit, where I do UX design and front-end development.">
+  <meta name="author" content="Dan Mindru">
+  <meta name="keywords" content="dan, mindru, mindrudan, web development, front-end, experience design, ux">
+
+  <!-- Facebook META -->
+  <meta property="og:site_name" content="Dan Mindru">
+  <meta property="og:title" content="Dan Mindru">
+  <meta property="og:description" content="Sold my soul to fadeit, where I do UX design and front-end development.">
+  <meta property="og:url" content="http://mindrudan.com">
+  <meta property="og:image" content="/img/brand/mindrudan.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter META -->
+  <meta name="twitter:title" content="Dan Mindru">
+  <meta name="twitter:description" content="Sold my soul to fadeit, where I do UX design and front-end development.">
+  <meta name="twitter:url" content="http://mindrudan.com">
+  <meta name="twitter:image" content="/img/brand/mindrudan.jpg">
+
+  <!-- Fav Icon - can be improved? apple fav icons are present in public/img though -->
+  <link rel="shortcut icon" href="/img/brand/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="/img/brand/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/brand/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/brand/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/img/brand/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/img/brand/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/img/brand/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/brand/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/img/brand/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/brand/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/img/brand/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/img/brand/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/img/brand/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/img/brand/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/img/brand/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-TileImage" content="/img/brand/mstile-144x144.png">
+  <meta name="msapplication-config" content="/img/brand/browserconfig.xml">
+
+  <!-- HTML5 Shim -->
+  <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- All stylesheets in ./src/assets/ (including LESS files) are compiled in one css file in both build and compile phases -->
+  <link rel="stylesheet" type="text/css" href="./src/assets/css/app.min.css" />
+</head>
+
+<body>
+  <section app-shell></section>
+</body>
+
+<%
+  //#Scripts are automatically added using grunt, you should not touch this part.
+
+  if(typeof scripts !== 'undefined'){
+    scripts.forEach(function (script){
+      %><script type="text/javascript" src="<%= script %>"></script><%
+    });
+  } else {
+      %><script type="text/javascript" src="./src/app/app.min.js"></script><%
+  }
+%>
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+
+_gaq.push(['_setAccount', 'UA-29019414-11']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
+</html>

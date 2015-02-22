@@ -1,0 +1,15 @@
+env:
+  global:
+  - secure: IhJtZa4lzyOhHfJh7Z0K75qJLISP3+HAQA/5F7Yke+RphU/GEzSiRb6R+EXTYgEj4VaxpTBm8O9rzRWjWVYrE6dy588EqmNn2nVYrWPoIowpoNFiJ5SD7D9KAATP+xCJpJi8pAXPGz85A8nIfzrzlTBzQJyveBYBn/ZF+jbBj+8=
+  - secure: MIdvP2Kr6Q0Nncl2BdRWiF6ygb9huLDdve5UG5M7m4YcGv0+M8sKVXejXZq8QIghk7/f88wlUZs+jQJXnIK359REDhbgUter8Jpd4ONrLic5e92eCdrHCxxkecJr18wQlOJC0PhFJe12t/EXZEgN8Cgbp1AXSWwN7bd7hlKOCQc=
+  - secure: gsrnE30EVNwqJmjt1DOv79mkYxAo+WVdK8hmNwgGwEK674tWe5eYQz70aOSDX9e51HvHIIvLzkVcB5EJCMAauujaE6E2F5HyhX6kDddoFKXdrP1BHZdbidUj8B+vJxIKu/+RXfCArCRxvgxWMP+hgcGiiaVX4+4+eWzhxy4k9GQ=
+language: node_js
+node_js:
+- '0.10'
+addons:
+  sauce_connect: true
+before_script:
+- npm install
+- bower install
+- grunt build
+script: grunt test:ci

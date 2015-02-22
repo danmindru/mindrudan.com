@@ -1,0 +1,56 @@
+{
+  "name": "angular-bp",
+  "version": "0.1.6",
+  "description": "A boilerplate resulting from the study of AngularJS boilerplates, modularity and application architectures",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danmindru/angular-boilerplate-study"
+  },
+  "keywords": [
+    "AngularJS",
+    "boilerplate",
+    "module"
+  ],
+  "author": "Dan Mindru",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://github.com/danmindru/angular-boilerplate-study/blob/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/danmindru/angular-boilerplate-study/issues"
+  },
+  "homepage": "https://github.com/danmindru/angular-boilerplate-study",
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "glob": "^4.0.6",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.2.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-html2js": "^0.3.0",
+    "grunt-karma": "^0.10.1",
+    "grunt-newer": "^1.1.0",
+    "grunt-ng-annotate": "^0.10.0",
+    "grunt-protractor-runner": "^1.1.4",
+    "grunt-shell": "^1.1.1",
+    "http-server": "^0.7.3",
+    "jasmine-core": "^2.1.2",
+    "jit-grunt": "^0.9.0",
+    "karma": "^0.12.25",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.3.0",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
+    "protractor": "^1.4.0",
+    "time-grunt": "^1.0.0"
+  }
+}
