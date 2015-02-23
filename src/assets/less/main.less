@@ -766,11 +766,6 @@ body{
   }
 }
 
-.active{
-  color:@md_light_gray;
-  text-decoration: underline;
-}
-
 .default-footer-link{
   &:hover, &:focus{
     color:@md_light_gray;
@@ -781,6 +776,15 @@ body{
   }
 
   .active{
+    color:@md_light_gray;
+  }
+}
+
+.active{
+  color:@md_light_gray;
+  text-decoration: underline;
+
+  &:visited{
     color:@md_light_gray;
   }
 }
@@ -1104,6 +1108,7 @@ body{
   .content-box();
   padding-top: 40px;
   padding-bottom: 30px;
+  z-index: 9999;
 
   .project-title{
     padding-left: 30px;
@@ -1230,7 +1235,7 @@ body{
 .about-image-container{
   padding:0;
   left:0;
-  padding-right: 60px;
+  padding: 0 30px 0 30px;
   margin-bottom:30px;
   background: #c4c4c4; /* Old browsers */
   background: -moz-linear-gradient(left,  #c4c4c4 0%, #d3d3d3 100%); /* FF3.6+ */
@@ -1247,6 +1252,10 @@ body{
 
   .project-title, .my-description{
     color:@md_dark_gray;
+  }
+
+  .project-title{
+    padding-left: 15px;
   }
 
   .default-container{

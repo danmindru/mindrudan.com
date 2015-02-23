@@ -6,6 +6,7 @@
  * @param strict: true if should set the height and not min-height
  */
 angular.module('dm.coreLayout').directive('stretch', stretch);
+stretch.$inject = ['$window'];
 function stretch($window){
   function stretchLink(scope, element, attrs){
     var windowElement = angular.element($window),
