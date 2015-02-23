@@ -99,6 +99,7 @@
       "browser": true,
       "element": true,
       "by": true,
-      "process": true
+      "process": true,
+      "WOW": true
     } // additional predefined global variables
 }

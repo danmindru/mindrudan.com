@@ -2,7 +2,9 @@ angular.module(dmConfig.appRootModuleName).controller('RootController', rootCont
 
 rootController.$inject = ['$scope', '$window'];
 function rootController($scope, $window) {
-  var vm = this;
+  var vm = this,
+      wow;
+
   vm.htmlTitle = 'Dan Mindru';
   /*
    * Event callback on every route change
@@ -12,13 +14,16 @@ function rootController($scope, $window) {
    *
    */
   $scope.$on('$stateChangeSuccess', function rootStateChangeSuccess(event, toState){
+    wow.init();
     /*
      * updates the <title> tag if the new route has a pageTitle set
      * (vm.htmlTitle is binded to the title tag)
      *
      */
-    if(angular.isDefined(toState.data.pageTitle)){
+    if(angular.isDefined(toState.data) && angular.isDefined(toState.data.pageTitle)){
       vm.htmlTitle = toState.data.pageTitle + ' - Dan Mindru';
+    } else {
+      vm.htmlTitle = 'Dan Mindru';
     }
 
     $window.scrollTo(0,0);
@@ -36,4 +41,13 @@ function rootController($scope, $window) {
   $scope.$on('changedPage', function changedPage(event, pageTitle){
     vm.htmlTitle = pageTitle;
   });
+
+  wow = new WOW(
+    {
+      offset:       0,
+      mobile:       false,
+      live:         true
+    }
+  );
+  wow.init();
 }

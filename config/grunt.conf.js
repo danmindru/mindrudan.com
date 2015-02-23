@@ -25,7 +25,7 @@ module.exports = {
   build: {
     vendor_js: [
       //written in 'index.html' in this order
-      './vendor/wow/wow.js',
+      './vendor/wow/dist/wow.js',
       './vendor/angular/angular.js',
       './vendor/angular-ui-router/release/angular-ui-router.js',
       './vendor/angular-mocks/angular-mocks.js',
@@ -50,7 +50,7 @@ module.exports = {
   compile: {
     vendor_min_js: [
       //won't minify again
-      './vendor/wow/wow.min.js',
+      './vendor/wow/dist/wow.min.js',
       './vendor/angular/angular.min.js',
       './vendor/angular-ui-router/release/angular-ui-router.min.js',
       './vendor/angular-scroll/angular-scroll.min.js'

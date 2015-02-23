@@ -1,37 +1,9 @@
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <section class="container-fluid">
-    <p class="navbar-text">
-      <strong>Demo application&#0153;</strong>
-    </p>
-
-    <ul class="nav navbar-nav">
-      <li ui-sref-active="active">
-        <a href ui-sref="home">
-          Home
-        </a>
-      </li>
-
-      <li ui-sref-active="active">
-        <a href ui-sref="providerIndex">
-          Providers
-        </a>
-      </li>
-
-      <li ui-sref-active="active">
-        <a href ui-sref="customerIndex">
-          Customers
-        </a>
-      </li>
-
-      <li ui-sref-active="active">
-        <a href ui-sref="about">
-          About
-        </a>
-      </li>
-    </ul>
-
-    <p class="navbar-text pull-right">
-      Copyright © <span ng-bind="::vm.currentDate"></span> <strong><a href="https://github.com/danmindru/angular-boilerplate-study" target="_blank">Angular boilerplate study</a></strong>
-    </p>
-  </section>
+<nav class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footer-container" role="navigation">
+  <p class="footer-text">
+    Copyright © <span ng-bind="vm.currentDate"></span> Dan Mindru
+    <a target="_blank" class="contact-link default-footer-link" href="mailto:mindrudan@gmail.com">mindrudan@gmail.com</a>
+    <a target="_blank" class="contact-link default-footer-link" href="http://twitter.com/mindrudan">@mindrudan</a>
+    <a class="contact-link default-footer-link" href ui-sref="about" ui-sref-active="active">About</a>
+    <a class="contact-link default-footer-link" href ui-sref="home" ui-sref-active="active">Projects</a>
+  </p>
 </nav>
