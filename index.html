@@ -5,7 +5,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="I am a full-stack developer with an eye for beautiful UX & interface designs, be it for the web or mobile. Also, sold my soul to fadeit." />
-	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <style>
@@ -71,7 +70,7 @@ table {
 body {
   min-height: 100vh;
   width: 100vw;
-  padding-top: 15px;
+  padding: 30px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,12 +84,25 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-size: cover;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAdElEQVQIWwFpAJb/AY4nqP/XAOcAHkEyAOPq7gDd078AAU9etf8c9vgAztveABUhOQAS9OsAARt3sP9nVS8A5eP1AMKe3QAm5PYAARxkrv+HdzwAVSQVAG6Z0wDwnOIAARJJk/9RWDwAIhoNAMHL8AAgsfUAtVos7cqnEhsAAAAASUVORK5CYII=");
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif, "Apple Color Emoji";
-  -webkit-animation: spinMeRound 5s infinite;
-          animation: spinMeRound 5s infinite;
+  -webkit-animation: spinMeRound 20s infinite;
+          animation: spinMeRound 20s infinite;
+  position: relative;
+}
+
+body:after{
+  content: "";
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAdElEQVQIWwFpAJb/AY4nqP/XAOcAHkEyAOPq7gDd078AAU9etf8c9vgAztveABUhOQAS9OsAARt3sP9nVS8A5eP1AMKe3QAm5PYAARxkrv+HdzwAVSQVAG6Z0wDwnOIAARJJk/9RWDwAIhoNAMHL8AAgsfUAtVos7cqnEhsAAAAASUVORK5CYII=");
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100vw + 60px);
+  height: calc(100vh + 60px);
+  z-index: -1;
+  margin: -30px;
+  filter: blur(10px); /* Just FF */
 }
 
 main{
@@ -228,6 +240,7 @@ a:hover:after, a:focus:after{
 }
 
 .dm > img {
+  position: relative;
   border-radius: 50%;
   border: 3px solid white;
   max-width: 200px;
@@ -237,7 +250,10 @@ a:hover:after, a:focus:after{
       -ms-flex-positive: 0;
           flex-grow: 0;
   -webkit-filter: hue-rotate(220deg);
-          filter: hue-rotate(220deg);
+}
+
+.dm article{
+  position: relative;
 }
 
 footer{
@@ -332,57 +348,50 @@ footer{
   }
 }
 
+/**
+ * ! hue-rotate just for webkit browsers, it's gonna set others on fire.
+ */
 @-webkit-keyframes spinMeRound {
   0% {
     -webkit-filter: hue-rotate(-5deg);
-            filter: hue-rotate(-5deg);
   }
 
   30% {
     -webkit-filter: hue-rotate(10deg);
-            filter: hue-rotate(10deg);
   }
 
   70% {
     -webkit-filter: hue-rotate(50deg);
-            filter: hue-rotate(50deg);
   }
 
   95% {
     -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
   }
 
   100% {
     -webkit-filter: hue-rotate(-5deg);
-            filter: hue-rotate(-5deg);
   }
 }
 
 @keyframes spinMeRound {
   0% {
     -webkit-filter: hue-rotate(-5deg);
-            filter: hue-rotate(-5deg);
   }
 
   30% {
     -webkit-filter: hue-rotate(10deg);
-            filter: hue-rotate(10deg);
   }
 
   70% {
     -webkit-filter: hue-rotate(50deg);
-            filter: hue-rotate(50deg);
   }
 
   95% {
     -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
   }
 
   100% {
     -webkit-filter: hue-rotate(-5deg);
-            filter: hue-rotate(-5deg);
   }
 }
 
