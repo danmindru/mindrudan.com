@@ -1,1 +1,0 @@
-dmConfig.pushAfterBootstrap('dm.coreLayout');

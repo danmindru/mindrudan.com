@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dan Mindru — developer and designer of things.</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="I am a full-stack developer with an eye for beautiful UX & interface designs, be it for the web or mobile. Also, sold my soul to fadeit." />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<style>
+/**
+ * Reset
+ *
+ * http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * Minimal styles
+ */
+body {
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAdElEQVQIWwFpAJb/AY4nqP/XAOcAHkEyAOPq7gDd078AAU9etf8c9vgAztveABUhOQAS9OsAARt3sP9nVS8A5eP1AMKe3QAm5PYAARxkrv+HdzwAVSQVAG6Z0wDwnOIAARJJk/9RWDwAIhoNAMHL8AAgsfUAtVos7cqnEhsAAAAASUVORK5CYII=");
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif, "Apple Color Emoji";
+  -webkit-animation: spinMeRound 5s infinite;
+          animation: spinMeRound 5s infinite;
+}
+
+main{
+  -ms-flex-preferred-size: 380px;
+      flex-basis: 380px;
+  max-width: calc(100% - 20px);
+  height: 400px;
+  padding: 45px;
+  margin-top: auto;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-animation: 1s showOff ease;
+          animation: 1s showOff ease;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  font-weight: 300;
+  position: relative;
+  overflow: hidden;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+main:before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAlElEQVQIWx3DuQrCQBRA0fuyTOKG//8v9oKNVqKFkEJEFEGyzZLMPMEDRw7XpzofcKIkUxBtRCNYjXhVUpYjp+al3eBxMVDXFdFlxJQYmXkPnm6akMv9o98hkDSwMAXe5vSzJ8hE7+HRdsj+3OgUM9CZ7XoJYmidpR1bkhSIWSG7403L0qAp/Ve1IVfBhoG8zNjUG36h9VyYXkZZewAAAABJRU5ErkJggg==");
+}
+
+h1{
+  font-size: 2.2em;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 200;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+h2{
+  font-size: 1em;
+  color: white;
+  font-weight: 300;
+}
+
+a{
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  padding: 10px 15px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+a:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: translateY(15px);
+          transform: translateY(15px);
+  -webkit-transition: background-color 0.5s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.5s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.5s ease;
+  transition: transform 0.3s ease, background-color 0.5s ease, -webkit-transform 0.3s ease;
+  background-color: transparent;
+}
+
+a:hover, a:focus{
+  outline: 0;
+  color: whitesmoke;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+a:hover:after, a:focus:after{
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+  -webkit-transition: background-color 0.5s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.5s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.5s ease;
+  transition: transform 0.3s ease, background-color 0.5s ease, -webkit-transform 0.3s ease;
+}
+
+.dm{
+  opacity:0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-animation: 0.3s fadeIn ease;
+          animation: 0.3s fadeIn ease;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height:100%;
+}
+
+.dm > img {
+  border-radius: 50%;
+  border: 3px solid white;
+  max-width: 200px;
+  -ms-flex-preferred-size: 200px;
+      flex-basis: 200px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-filter: hue-rotate(220deg);
+          filter: hue-rotate(220deg);
+}
+
+footer{
+  margin-top: auto;
+  padding-bottom: 30px;
+}
+
+.links{
+  width: 100vw;
+  text-align: center;
+}
+
+@media only screen and (min-width: 500px){
+  a{
+    width: auto;
+  }
+}
+
+@-webkit-keyframes showOff {
+  0% {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+
+  30% {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+
+  70% {
+    box-shadow: 0 0 30px rgba(1, 1, 1, 0.1);
+  }
+
+  100% {
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    box-shadow: 0 0 14px rgba(1, 1, 1, 0.2);
+  }
+}
+
+@keyframes showOff {
+  0% {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+
+  30% {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+
+  70% {
+    box-shadow: 0 0 30px rgba(1, 1, 1, 0.1);
+  }
+
+  100% {
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    box-shadow: 0 0 14px rgba(1, 1, 1, 0.2);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes spinMeRound {
+  0% {
+    -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
+  }
+
+  30% {
+    -webkit-filter: hue-rotate(10deg);
+            filter: hue-rotate(10deg);
+  }
+
+  70% {
+    -webkit-filter: hue-rotate(50deg);
+            filter: hue-rotate(50deg);
+  }
+
+  95% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
+  }
+}
+
+@keyframes spinMeRound {
+  0% {
+    -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
+  }
+
+  30% {
+    -webkit-filter: hue-rotate(10deg);
+            filter: hue-rotate(10deg);
+  }
+
+  70% {
+    -webkit-filter: hue-rotate(50deg);
+            filter: hue-rotate(50deg);
+  }
+
+  95% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
+  }
+}
+
+</style>
+<body>
+<main>
+  <section class="dm">
+    <img src="./dan-mindru-s-face.jpg" alt="Dan Mindru" />
+
+    <article>
+      <h1>Dan Mindru</h1>
+      <h2>Designer, developer, beard grower</h2>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p class="links">
+    <a href="https://github.com/danmindru">Github</a>
+    <a href="https://fadeit.dk/blog/authors/dan/">fadeit Blog</a>
+    <a href="https://ngmilk.rocks/author/dan-mindru/">ngmilk Blog</a>
+
+    <a href="https://twitter.com/d4m1n">Twitter</a>
+    <a href="https://dk.linkedin.com/in/danmindru">Linkedin</a>
+    <a href="https://www.upwork.com/freelancers/~0104b38d2ffd07346a">Upwork</a>
+
+    <a href="https://fadeit.dk">fadeit</a>
+    <a href="https://hopper.dk">Hopper</a>
+    <a href="https://playsignage.com">Play.</a>
+  </p>
+</footer>
+</body>
+</html>
