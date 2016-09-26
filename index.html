@@ -107,8 +107,10 @@ body {
   transform: scale(1.1);
   z-index: -1;
   filter: blur(10px); /* Just FF */
-  -webkit-animation: spinMeRound 20s infinite;
-    animation: spinMeRound 20s infinite;
+  -webkit-animation: spinMeRound 20s;
+    animation: spinMeRound 20s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 main{
