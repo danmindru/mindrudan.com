@@ -88,9 +88,9 @@ body {
           align-items: center;
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif, "Apple Color Emoji";
-  -webkit-animation: spinMeRound 20s infinite;
-          animation: spinMeRound 20s infinite;
   position: relative;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
 }
 
 .background{
@@ -107,6 +107,8 @@ body {
   transform: scale(1.1);
   z-index: -1;
   filter: blur(10px); /* Just FF */
+  -webkit-animation: spinMeRound 20s infinite;
+    animation: spinMeRound 20s infinite;
 }
 
 main{
