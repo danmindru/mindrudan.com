@@ -93,7 +93,7 @@ body {
   position: relative;
 }
 
-body:after{
+.background{
   content: "";
   background-size: cover;
   background-color: #6442A1;
@@ -101,10 +101,11 @@ body:after{
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100vw + 60px);
-  height: calc(100vh + 60px);
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  transform: scale(1.1);
   z-index: -1;
-  margin: -30px;
   filter: blur(10px); /* Just FF */
 }
 
@@ -426,5 +427,7 @@ footer{
     <a href="https://playsignage.com">Play.</a>
   </p>
 </footer>
+
+<figure class="background"></figure>
 </body>
 </html>
