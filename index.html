@@ -93,6 +93,10 @@ body {
   -webkit-transform: translate3d(0,0,0);
 }
 
+svg path {
+  fill: rgba(255, 255, 255, 0.85);
+}
+
 .background{
   content: "";
   background-size: cover;
@@ -112,10 +116,10 @@ body {
 }
 
 main{
-  -ms-flex-preferred-size: 380px;
-      flex-basis: 380px;
+  -ms-flex-preferred-size: 300px;
+      flex-basis: 300px;
   max-width: calc(100% - 20px);
-  height: 400px;
+  height: 320px;
   padding: 30px;
   margin-top: auto;
   border-radius: 5px;
@@ -184,12 +188,12 @@ h1{
 }
 
 h2{
-  font-size: 1em;
+  font-size: 0.8em;
   color: white;
   font-weight: 300;
 }
 
-a{
+a {
   font-size: 0.8em;
   color: white;
   text-decoration: none;
@@ -198,16 +202,17 @@ a{
   padding: 10px 15px;
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: auto;
   margin: 10px 0;
 }
 
 a:after{
   content: "";
   position: absolute;
-  width: 100%;
-  height: 2px;
-  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  left: calc(50% - 3px);
   bottom: 0;
   -webkit-transform: translateY(15px);
           transform: translateY(15px);
@@ -218,6 +223,35 @@ a:after{
   background-color: transparent;
 }
 
+a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -40px;
+  opacity: 0;
+  left: 0;
+  margin-bottom: 15px;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.3s ease;
+}
+
+.twitter:before {
+  content: "Twitter";
+}
+
+.github:before {
+  content: "Github";
+}
+
+.linkedin:before {
+  content: "Linkedin";
+}
+
 a:hover, a:focus{
   outline: 0;
   color: whitesmoke;
@@ -225,8 +259,8 @@ a:hover, a:focus{
   transition: color 0.3s ease;
 }
 
-a:hover:after, a:focus:after{
-  background-color: rgba(255, 255, 255, 0.7);
+a:hover:after, a:focus:after {
+  background-color: rgba(255, 255, 255, 0.4);
   -webkit-transform: translateY(5px);
           transform: translateY(5px);
   -webkit-transition: background-color 0.5s ease, -webkit-transform 0.3s ease;
@@ -235,7 +269,17 @@ a:hover:after, a:focus:after{
   transition: transform 0.3s ease, background-color 0.5s ease, -webkit-transform 0.3s ease;
 }
 
-.dm{
+a:hover:before, a:focus:before {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.3s ease;
+}
+
+.dm {
   opacity:0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   -webkit-animation: 0.3s fadeIn ease;
@@ -261,9 +305,9 @@ a:hover:after, a:focus:after{
   position: relative;
   border-radius: 50%;
   border: 3px solid white;
-  max-width: 200px;
-  -ms-flex-preferred-size: 200px;
-      flex-basis: 200px;
+  max-width: 150px;
+  -ms-flex-preferred-size: 150px;
+      flex-basis: 150px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
@@ -274,9 +318,8 @@ a:hover:after, a:focus:after{
   position: relative;
 }
 
-footer{
+footer {
   margin-top: auto;
-  padding-bottom: 30px;
 }
 
 .links{
@@ -284,13 +327,34 @@ footer{
   text-align: center;
 }
 
-@media only screen and (min-width: 500px){
-  a{
-    width: auto;
+@media only screen and (min-width: 600px) {
+  h2 {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  main {
+    padding: 45px;
   }
 
-  main{
-    padding: 45px;
+  footer {
+    padding-bottom: 30px;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  main {
+    -ms-flex-preferred-size: 380px;
+    flex-basis: 380px;
+    max-width: calc(100% - 20px);
+    height: 400px;
+  }
+
+  .dm > img {
+    max-width: 200px;
+    -ms-flex-preferred-size: 200px;
+        flex-basis: 200px;
   }
 }
 
@@ -384,50 +448,57 @@ footer{
   }
 }
 
-/**
- * ! hue-rotate just for webkit browsers, it's gonna set others on fire.
- */
 @-webkit-keyframes spinMeRound {
   0% {
     -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
   }
 
   30% {
     -webkit-filter: hue-rotate(10deg);
+            filter: hue-rotate(10deg);
   }
 
   70% {
     -webkit-filter: hue-rotate(50deg);
+            filter: hue-rotate(50deg);
   }
 
   95% {
     -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
   }
 
   100% {
     -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
   }
 }
 
 @keyframes spinMeRound {
   0% {
     -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
   }
 
   30% {
     -webkit-filter: hue-rotate(10deg);
+            filter: hue-rotate(10deg);
   }
 
   70% {
     -webkit-filter: hue-rotate(50deg);
+            filter: hue-rotate(50deg);
   }
 
   95% {
     -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
   }
 
   100% {
     -webkit-filter: hue-rotate(-5deg);
+            filter: hue-rotate(-5deg);
   }
 }
 </style>
@@ -446,17 +517,26 @@ footer{
 
 <footer>
   <p class="links">
-    <a href="https://github.com/danmindru">Github</a>
-    <a href="https://fadeit.dk/blog/authors/dan/">fadeit Blog</a>
-    <a href="https://ngmilk.rocks/author/dan-mindru/">ngmilk Blog</a>
-
-    <a href="https://twitter.com/d4m1n">Twitter</a>
-    <a href="https://dk.linkedin.com/in/danmindru">Linkedin</a>
-  <!--   <a href="https://www.upwork.com/freelancers/~0104b38d2ffd07346a">Upwork</a>
-
-    <a href="https://fadeit.dk">fadeit</a>
-    <a href="https://hopper.dk">Hopper</a> -->
-    <a href="https://playsignage.com">Play.</a>
+    <a href="https://github.com/danmindru" class="github">
+      <svg width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 44C9.85 44 0 34.15 0 22S9.85 0 22 0s22 9.85 22 22-9.85 22-22 22zm-3.785-9.429c1.046.28 2.14.429 3.267.429 1.48 0 2.906-.257 4.238-.731v-.037c0-.504.017-2.163.017-4.219 0-1.434-.479-2.373-1.017-2.848 3.341-.381 6.848-1.681 6.848-7.589 0-1.68-.58-3.052-1.542-4.128.154-.389.669-1.952-.149-4.07 0 0-1.258-.414-4.12 1.577A14.061 14.061 0 0 0 22 12.437a14.039 14.039 0 0 0-3.755.518c-2.864-1.99-4.124-1.576-4.124-1.576-.816 2.117-.301 3.68-.147 4.07-.96 1.075-1.545 2.447-1.545 4.127 0 5.894 3.502 7.213 6.833 7.6-.428.386-.816 1.063-.952 2.057-.855.394-3.027 1.073-4.366-1.277 0 0-.792-1.477-2.297-1.586 0 0-1.466-.02-.104.935 0 0 .984.473 1.666 2.25 0 0 .88 2.991 5.053 2.062.007 1.283.02 2.25.02 2.615 0 .113-.02.23-.067.34z"
+          fill="#FFF" fill-rule="evenodd" />
+      </svg>
+    </a>
+    
+    <a href="https://dk.linkedin.com/in/danmindru" class="linkedin">
+      <svg width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 44C9.85 44 0 34.15 0 22S9.85 0 22 0s22 9.85 22 22-9.85 22-22 22zm-9.496-25.587V32h3.899V18.413h-3.899zm1.85-1.7c1.465 0 2.378-1.042 2.378-2.357-.028-1.34-.913-2.356-2.35-2.356C12.941 12 12 13.018 12 14.36c0 1.315.915 2.354 2.326 2.354h.028zM32 32v-7.555c0-4.207-2.177-6.163-4.947-6.163-2.233 0-3.632 1.331-3.891 2.263v-2.132h-4.38c.057 1.132 0 13.587 0 13.587h4.38v-7.352c0-.41-.018-.818.095-1.11.301-.818.948-1.665 2.11-1.665 1.521 0 2.213 1.255 2.213 3.095V32H32z"
+          fill="#FFF" fill-rule="evenodd" />
+      </svg>
+    </a>
+    
+    <a href="https://twitter.com/d4m1n" class="twitter">
+      <svg width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 44C9.85 44 0 34.15 0 22S9.85 0 22 0s22 9.85 22 22-9.85 22-22 22zm8.526-27.154a4.51 4.51 0 0 0 1.893-2.513 8.355 8.355 0 0 1-2.736 1.102A4.194 4.194 0 0 0 26.539 14c-2.38 0-4.307 2.035-4.307 4.544 0 .356.036.703.11 1.034-3.58-.19-6.754-1.996-8.88-4.747a4.724 4.724 0 0 0-.583 2.285c0 1.576.76 2.967 1.917 3.783a4.154 4.154 0 0 1-1.953-.568v.056c0 2.202 1.484 4.04 3.458 4.455a4.01 4.01 0 0 1-1.137.16c-.277 0-.548-.027-.81-.08.548 1.804 2.139 3.12 4.025 3.155-1.476 1.219-3.333 1.944-5.351 1.944-.348 0-.691-.02-1.028-.062A11.747 11.747 0 0 0 18.604 32c7.926 0 12.257-6.924 12.257-12.929 0-.197-.002-.394-.01-.587A9.006 9.006 0 0 0 33 16.13a8.257 8.257 0 0 1-2.474.715z"
+          fill="#FFF" fill-rule="evenodd" />
+      </svg>
+    </a>
   </p>
 </footer>
 
