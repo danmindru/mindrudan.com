@@ -11,11 +11,14 @@
     "three": "^0.106.2",
     "winXP": "https://github.com/danmindru/winXP"
   },
+  "devDependencies": {
+    "babel-jest": "24.8.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "./node_modues/.bin/react-scripts start",
+    "build": "./node_modues/.bin/react-scripts build",
+    "test": "./node_modues/.bin/react-scripts test",
+    "eject": "./node_modues/.bin/react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
