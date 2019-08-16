@@ -12,7 +12,8 @@
     "winXP": "https://github.com/danmindru/winXP"
   },
   "devDependencies": {
-    "babel-jest": "24.8.0"
+    "babel-jest": "24.8.0",
+    "emotion": "^10.0.14"
   },
   "scripts": {
     "start": "./node_modues/.bin/react-scripts start",

@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import { version } from '../package.json';
 import './App.css';
+import { css } from 'emotion';
 
 import * as THREE from 'three';
 import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect.js';
@@ -17,11 +18,98 @@ import * as nonWorkingChalk from 'chalk';
 const options: any = { enabled: true, level: 2 };
 const forcedChalk = new nonWorkingChalk.constructor(options);
 
-const terminalStyle = {
-  height: '100vh',
-  width: '100vw',
-  backgroundColor: 'black'
-};
+const mainStyle = css`
+  --terminal-padding: 16px;
+  background-color: #444;
+  perspective: 1500px;
+
+  position: relative;
+  overflow: hidden;
+
+  .terminal {
+    width: calc(100vw - var(--terminal-padding) * 4);
+    height: calc(100vh - var(--terminal-padding) * 2);
+    padding: var(--terminal-padding) calc(var(--terminal-padding) * 2);
+  }
+`;
+
+const menuStyle = css`
+  --menu-width: 280px;
+
+  position: absolute;
+  transform: translate3d(var(--menu-width), 0, 0);
+  z-index: 3;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow: hidden;
+  transition: transform 0.8s;
+  background-color: rgba(251, 115, 121, 1);
+  color: white;
+  padding: 32px;
+  box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+
+  ul {
+    height: 100%;
+    overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 32px 0;
+
+    li {
+      margin: 0;
+      padding: 8px 16px;
+    }
+  }
+`;
+
+const menuOpenStyle = css`
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.8s;
+`;
+
+const terminalStyle = css`
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+
+  position: relative;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+
+  :after {
+    content: '';
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background-color: transparent;
+    transition: background-color 1s;
+  }
+`;
+
+const terminalOpenStyle = css`
+  transform: translate3d(50px, 0, -300px) rotateY(10deg);
+  perspective: 1000px;
+  transition: transform 0.5s;
+
+  :after {
+    background-color: rgba(251, 115, 121, 0.2);
+    transition: background-color 1s;
+  }
+`;
+
+const openButtonStyle = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+`;
+
 const EOL = '\r\n';
 const makeCommand = (command) => (args): Promise<any> => {
   // send a command
@@ -182,6 +270,7 @@ Code: e58d8040 e58d0044 e3180020 13a0a000 (051ea004)`,
 
 function App() {
   const terminalDom = useRef(null);
+  const [open, setOpen] = useState(false);
 
   // todo: hook & state
   const setupThreeGlitch = (text) => {
@@ -319,7 +408,7 @@ function App() {
         new THREE.SphereBufferGeometry(200, 20, 10),
         new THREE.MeshPhongMaterial({ flatShading: true })
       );
-      // scene.add(sphere); // TODO need sphere???
+      scene.add(sphere); // TODO need sphere???
       // Plane
       plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(400, 400), new THREE.MeshBasicMaterial({ color: 0xe0e0e0 }));
       plane.position.y = -200;
@@ -371,6 +460,12 @@ function App() {
     }
   };
 
+  const onTerminalPress = () => {
+    if (open) {
+      setOpen(false);
+    }
+  }
+
   useEffect(() => {
     const customProvider = {
       getCommands: () => [
@@ -405,18 +500,36 @@ function App() {
     bashme.show(terminalDom.current);
     bashme.on('command', (cmd, args) => console.log(cmd, args));
 
+    const delay = 100000;
     setTimeout(() => {
       renderKernelPanic(kernelPanics[Math.floor(Math.random() * kernelPanics.length)], bashme).then(() => {
         setupThreeGlitch();
       });
-    }, 2000);
+    }, 2000 + delay);
 
     setTimeout(() => {
-      setupThreeAscii()
-    }, 3000);
-  });
+      setupThreeAscii();
+    }, 5000 + delay);
+  }, []);
 
-  return <div ref={terminalDom} style={terminalStyle} />;
+  return (
+    <section className={mainStyle}>
+      <main ref={terminalDom} className={[terminalStyle, open ? terminalOpenStyle : ''].join(' ')} onClick={onTerminalPress}/>
+
+      <button className={openButtonStyle} onClick={() => setOpen(!open)}>
+        Open
+      </button>
+
+      <nav className={[menuStyle, open ? menuOpenStyle : ''].join(' ')}>
+        <ul>
+          <li>About</li>
+          <li>Projects</li>
+          <li>Screensaver</li>
+          <li>Github</li>
+        </ul>
+      </nav>
+    </section>
+  );
 }
 
 export default App;
