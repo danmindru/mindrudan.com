@@ -16,10 +16,10 @@
     "emotion": "^10.0.14"
   },
   "scripts": {
-    "start": "./node_modues/.bin/react-scripts start",
-    "build": "./node_modues/.bin/react-scripts build",
-    "test": "./node_modues/.bin/react-scripts test",
-    "eject": "./node_modues/.bin/react-scripts eject"
+    "start": "node ./node_modules/.bin/react-scripts start",
+    "build": "node ./node_modules/.bin/react-scripts build",
+    "test": "node ./node_modules/.bin/react-scripts test",
+    "eject": "node ./node_modules/.bin/react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
