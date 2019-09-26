@@ -5,6 +5,7 @@
   "dependencies": {
     "bashme": "^0.3.6",
     "chalk": "^2.4.2",
+    "common-tags": "^1.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
