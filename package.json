@@ -2,18 +2,18 @@
   "name": "mindrudan.com",
   "version": "1.0.0",
   "private": true,
+  "main": "./src/index.js",
   "dependencies": {
     "bashme": "^0.3.6",
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "common-tags": "^1.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "three": "^0.106.2",
-    "winXP": "https://github.com/danmindru/winXP"
+    "react-scripts": "^3.4.0",
+    "three": "^0.114.0"
   },
   "devDependencies": {
-    "babel-jest": "24.8.0",
+    "babel-jest": "^24.9.0",
     "emotion": "^10.0.14"
   },
   "scripts": {
