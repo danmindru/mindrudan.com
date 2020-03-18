@@ -14,13 +14,15 @@
   },
   "devDependencies": {
     "babel-jest": "^24.9.0",
-    "emotion": "^10.0.14"
+    "emotion": "^10.0.14",
+    "gh-pages": "^2.2.0"
   },
   "scripts": {
     "start": "node ./node_modules/.bin/react-scripts start",
     "build": "node ./node_modules/.bin/react-scripts build",
     "test": "node ./node_modules/.bin/react-scripts test",
-    "eject": "node ./node_modules/.bin/react-scripts eject"
+    "eject": "node ./node_modules/.bin/react-scripts eject",
+    "deploy": "node ./node_modules/.bin/gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
