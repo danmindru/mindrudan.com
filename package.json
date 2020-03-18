@@ -4,7 +4,7 @@
   "private": true,
   "main": "./src/index.js",
   "dependencies": {
-    "bashme": "^0.3.6",
+    "bashme": "^0.3.7",
     "chalk": "^3.0.0",
     "common-tags": "^1.8.0",
     "react": "^16.8.6",
