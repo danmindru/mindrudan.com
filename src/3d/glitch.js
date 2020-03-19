@@ -66,17 +66,20 @@ export const setupThreeGlitch = (text, clearAfter = 1000) => {
     var loader = new THREE.FontLoader();
 
     loader.load(`${process.env.PUBLIC_URL}/helvetiker_regular.typeface.json`, function(font) {
-      geometry = new THREE.TextGeometry('System memory corruption \n\rRebooting in 10 seconds...', {
-        font: font,
-        size: 20,
-        height: 1,
-        curveSegments: 2,
-        bevelEnabled: false,
-        bevelThickness: 2,
-        bevelSize: 2,
-        bevelOffset: 0,
-        bevelSegments: 1
-      });
+      geometry = new THREE.TextGeometry(
+        'System memory corruption \n\rKernel panic - not syncing: kernel stack overflow...',
+        {
+          font: font,
+          size: 20,
+          height: 1,
+          curveSegments: 2,
+          bevelEnabled: false,
+          bevelThickness: 2,
+          bevelSize: 2,
+          bevelOffset: 0,
+          bevelSegments: 1
+        }
+      );
 
       material = new THREE.LineBasicMaterial({ color: 0xffffff });
       mesh = new THREE.Mesh(geometry, material);
