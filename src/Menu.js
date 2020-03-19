@@ -36,6 +36,7 @@ const menuListStyle = css`
   list-style-type: none;
   margin: 0;
   padding: 32px 0;
+  flex-shrink: 0;
 
   li {
     margin: 0;
@@ -85,12 +86,26 @@ const menuButtonStyle = css`
   }
 `;
 
-const menuToggleStyle = css`
+const menuToggleContainerStyle = css`
   position: fixed;
   top: 0;
   right: 0;
   z-index: 5;
-  margin: 24px;
+  padding: 24px;
+  border: 0;
+  color: transparent;
+  display: inline-block;
+  background: 0;
+  user-select: none;
+  font-size: 0;
+
+  :hover,
+  :focus {
+    outline: 0;
+  }
+`;
+
+const menuToggleStyle = css`
   border: 0;
   color: transparent;
   display: inline-block;
@@ -99,7 +114,7 @@ const menuToggleStyle = css`
   border-radius: 50%;
   cursor: pointer;
   background: 0;
-  border: 1px solid rgba(251, 115, 121, 0.7);
+  border: 2px solid rgba(251, 115, 121, 0.7);
   box-shadow: 0 0 0 rgba(251, 115, 121, 0.4);
   animation: pulse 2s infinite;
   transition: 0.3s border;
@@ -117,7 +132,7 @@ const menuToggleStyle = css`
       box-shadow: 0 0 0 0 rgba(251, 115, 121, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(251, 115, 121, 0);
+      box-shadow: 0 0 0 20px rgba(251, 115, 121, 0);
     }
     100% {
       box-shadow: 0 0 0 0 rgba(251, 115, 121, 0);
@@ -138,7 +153,7 @@ export const Menu = (props) => {
     runCommand(COMMAND_NAMES.CLEAR);
     await wait(100);
     runCommand(COMMAND_NAMES.PHOTO);
-    await wait(1000)
+    await wait(1000);
     runCommand(COMMAND_NAMES.WHOAMI);
   };
 
@@ -160,16 +175,22 @@ export const Menu = (props) => {
 
   const screensaverPressed = async () => {
     setOpen(false);
-    runCommand(COMMAND_NAMES.SCREENSAVER)
+    runCommand(COMMAND_NAMES.SCREENSAVER);
   };
 
   return (
     <>
       <button
-        className={[menuToggleStyle, open ? menuToggleStyleOpen : ''].join(' ')}
+        className={menuToggleContainerStyle}
         onClick={() => setOpen(!open)}
       >
-        {open ? 'Open' : 'Close'}
+        <span
+          className={[menuToggleStyle, open ? menuToggleStyleOpen : ''].join(
+            ' '
+          )}
+        >
+          {open ? 'Open' : 'Close'}
+        </span>
       </button>
 
       <nav className={[menuStyle, open ? menuOpenStyle : ' '].join(' ')}>

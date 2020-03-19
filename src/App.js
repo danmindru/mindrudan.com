@@ -32,6 +32,10 @@ const mainStyle = css`
     width: calc(100vw - var(--terminal-padding) * 4);
     height: calc(100vh - var(--terminal-padding) * 2);
     padding: var(--terminal-padding) calc(var(--terminal-padding) * 2);
+
+    .xterm-viewport {
+      overflow-y: auto;
+    }
   }
 `;
 
@@ -90,7 +94,7 @@ export const App = () => {
 
   useEffect(() => {
       const bashme = new Bashme.Bashme({
-        prompt: forcedChalk.grey('mindrudan.com $ '),
+        prompt: forcedChalk.bold.gray('mindrudan.com $ '),
         welcomeMessage
       });
 
@@ -109,7 +113,7 @@ export const App = () => {
               EOL,
               ...commands.map(renderCommand),
               EOL,
-              forcedChalk.italic('For more commands type `help`'),
+              'For more commands type `help`.',
               EOL
             ].join(EOL);
 
