@@ -150,32 +150,20 @@ export const Menu = (props) => {
   const aboutPressed = async () => {
     setOpen(false);
 
-    runCommand(COMMAND_NAMES.CLEAR);
     await wait(100);
     runCommand(COMMAND_NAMES.PHOTO);
     await wait(1000);
     runCommand(COMMAND_NAMES.WHOAMI);
   };
 
-  const workPressed = async () => {
+  const workPressed = () => {
     setOpen(false);
-
-    runCommand(COMMAND_NAMES.CLEAR);
-    await wait(100);
     runCommand(COMMAND_NAMES.WORK);
   };
 
-  const contactPressed = async () => {
+  const contactPressed = () => {
     setOpen(false);
-
-    runCommand(COMMAND_NAMES.CLEAR);
-    await wait(100);
     runCommand(COMMAND_NAMES.CONTACT);
-  };
-
-  const screensaverPressed = async () => {
-    setOpen(false);
-    runCommand(COMMAND_NAMES.SCREENSAVER);
   };
 
   return (
@@ -213,11 +201,6 @@ export const Menu = (props) => {
           <li>
             <button onClick={workPressed} className={menuButtonStyle}>
               Work
-            </button>
-          </li>
-          <li>
-            <button onClick={screensaverPressed} className={menuButtonStyle}>
-              Screensaver
             </button>
           </li>
         </ul>
