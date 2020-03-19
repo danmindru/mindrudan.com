@@ -8,13 +8,14 @@ export const renderKernelPanic = (kernelPanic, bashmeInstance) =>
           () =>
             new Promise((resolve) =>
               setTimeout(
-                () => resolve(bashmeInstance.cli.write(cur + EOL)),
+                () => resolve(bashmeInstance.cli.write(EOL + cur)),
                 Math.random() * 200 + 50
               )
             )
         ),
-      Promise.resolve(bashmeInstance.cli.write(EOL))
+      Promise.resolve()
     )
     .then(() => {
+      bashmeInstance.cli.write(EOL);
       bashmeInstance.cli.prompt();
     });

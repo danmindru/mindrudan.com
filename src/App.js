@@ -23,7 +23,6 @@ import { isDebugOn } from './utils/debug';
 const mainStyle = css`
   --terminal-padding: 16px;
   background-color: #444;
-  perspective: 1500px;
 
   position: relative;
   overflow: hidden;
@@ -59,18 +58,18 @@ const terminalStyle = css`
     height: 100vh;
     pointer-events: none;
     background-color: transparent;
-    transition: background-color 1s;
+    transition: background-color 1s, backdrop-filter 1s;
   }
 `;
 
 const terminalOpenStyle = css`
-  transform: translate3d(50px, 0, -300px) rotateY(10deg);
-  perspective: 1000px;
+  transform: scale(0.8);
   transition: transform 0.5s;
 
   :after {
-    background-color: rgba(251, 115, 121, 0.2);
-    transition: background-color 1s;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 1s, backdrop-filter 1s;
+    backdrop-filter: blur(1px);
   }
 `;
 
@@ -92,11 +91,18 @@ export const App = () => {
     }
   };
 
+  const clearActiveElement = () => {
+    const activeElement = document.activeElement;
+    if (activeElement) {
+      activeElement.blur();
+    }
+  };
+
   useEffect(() => {
-      const bashme = new Bashme.Bashme({
-        prompt: forcedChalk.bold.gray('mindrudan.com $ '),
-        welcomeMessage
-      });
+    const bashme = new Bashme.Bashme({
+      prompt: forcedChalk.bold.gray('mindrudan.com $ '),
+      welcomeMessage
+    });
 
     const commands = [whoami(), contact(), photo(), work(bashme)];
     const customProvider = {
@@ -129,7 +135,6 @@ export const App = () => {
       ]
     };
 
-
     bashme.use(customProvider);
     bashme.use(new Bashme.GitHub('danmindru'));
 
@@ -146,10 +151,7 @@ export const App = () => {
   useEffect(() => {
     // Make sure there is no focused element when the menu state changes.
     // This can cause keyboad shortcuts to function strangely, i.e. space pressed a button that is off-canvas.
-    const activeElement = document.activeElement;
-    if (activeElement) {
-      activeElement.blur();
-    }
+    clearActiveElement();
   }, [open]);
 
   return (
