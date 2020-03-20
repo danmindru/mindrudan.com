@@ -13,10 +13,11 @@ const menuStyle = css`
 
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 32px);
+  height: 100vh;
+  box-sizing: border-box;
   padding: 32px;
   transform: translate3d(var(--menu-width), 0, 0);
-  position: absolute;
+  position: fixed;
   z-index: 3;
   top: 0;
   right: 0;

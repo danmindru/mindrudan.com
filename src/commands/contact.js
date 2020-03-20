@@ -9,7 +9,7 @@ export const contact = () => {
     --
 
     Drop me a mail anytime
-    <nadurdim(at)icloud.com>
+    <nadurdnim(at)icloud.com>
 
     --
   `
