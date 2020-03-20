@@ -19,6 +19,7 @@ export const setupThreeAscii = () => {
     document.removeEventListener('keydown', onKeyPressed, false);
 
     document.body.removeChild(container);
+    window.destroyThreeAscii = () => null;
   }
 
   function init() {
@@ -86,6 +87,7 @@ export const setupThreeAscii = () => {
 
   function onKeyPressed(event) {
     if (event.key === ' ') {
+      event.preventDefault();
       destroy();
     }
   }
@@ -103,6 +105,8 @@ export const setupThreeAscii = () => {
     controls.update();
     effect.render(scene, camera);
   }
+
+  window.destroyThreeAscii = destroy;
 
   return () => destroy();
 };
