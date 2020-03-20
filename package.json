@@ -22,7 +22,7 @@
     "build": "node ./node_modules/.bin/react-scripts build",
     "test": "node ./node_modules/.bin/react-scripts test",
     "eject": "node ./node_modules/.bin/react-scripts eject",
-    "deploy": "node ./node_modules/.bin/gh-pages -d build"
+    "deploy": "npm run build && node ./node_modules/.bin/gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
