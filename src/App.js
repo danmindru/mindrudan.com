@@ -19,11 +19,11 @@ import { photo } from './commands/photo-ascii';
 import { screensaver } from './commands/private/screensaver';
 
 import { isDebugOn } from './utils/debug';
+import { Clear } from './Clear';
 
 const mainStyle = css`
   --terminal-padding: 16px;
   background-color: #444;
-
   position: relative;
   overflow: hidden;
 
@@ -45,7 +45,8 @@ const terminalStyle = css`
   position: relative;
   left: 0;
   z-index: 1;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 
   :after {
     content: '';
@@ -76,6 +77,10 @@ const terminalOpenStyle = css`
 const welcomeMessage = `\nWelcome to mindrudan.com v${version}  🎩 ✨ \nType man to see notes on usage.`; // TODO: "or man <command>"
 
 const makeRunCommand = (bashmeInstance) => (commandName) => {
+  if (commandName === 'clear') {
+    return bashmeInstance.cli.clear();
+  }
+
   bashmeInstance.cli.input(`${commandName}${EOL}${EOL}`);
   bashmeInstance.cli.processInput();
 };
@@ -152,6 +157,12 @@ export const App = () => {
     // Make sure there is no focused element when the menu state changes.
     // This can cause keyboad shortcuts to function strangely, i.e. space pressed a button that is off-canvas.
     clearActiveElement();
+
+    // Scroll to bottom
+    const xtermViewport = document.querySelector('.xterm-viewport');
+    if (xtermViewport) {
+      xtermViewport.scrollTo(0, 999999);
+    }
   }, [open]);
 
   return (
@@ -169,6 +180,12 @@ export const App = () => {
           runCommand={makeRunCommand(bashmeInstance)}
         />
       )}
+
+      <Clear
+        menuOpen={open}
+        runCommand={makeRunCommand(bashmeInstance)}
+        bashme={bashmeInstance}
+      />
     </section>
   );
 };
