@@ -10,7 +10,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.4.0",
-    "three": "^0.114.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "babel-jest": "^24.9.0",
