@@ -15,18 +15,24 @@ const menuStyle = css`
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
-  padding: 32px;
   transform: translate3d(var(--menu-width), 0, 0);
   position: fixed;
   z-index: 3;
   top: 0;
   right: 0;
-  overflow: auto;
   transition: transform 0.8s;
   background-color: rgba(251, 115, 121, 0.9);
   backdrop-filter: blur(3px);
   color: white;
   box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+`;
+
+const navStyle = css`
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  min-height: calc(100vh - 64px);
+  overflow: auto;
 
   &:before {
     content: '';
@@ -34,7 +40,7 @@ const menuStyle = css`
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     background: linear-gradient(121.28deg, #dc8400 0%, #ffffff 40.08%),
       linear-gradient(140.54deg, #ff0000 0%, #0047ff 72.37%),
       linear-gradient(121.28deg, #00e384 0%, #ff0000 100%),
@@ -45,7 +51,7 @@ const menuStyle = css`
     background-blend-mode: darken, hue, overlay, color, color-dodge, difference,
       normal;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.3;
   }
 `;
 
@@ -56,7 +62,7 @@ const menuListStyle = css`
   overflow: hidden;
   list-style-type: none;
   margin: 0;
-  padding: 32px 0;
+  padding: 16px 0;
   flex-shrink: 0;
 
   li {
@@ -107,6 +113,10 @@ const menuButtonStyle = css`
     color: white;
     outline: 0;
   }
+`;
+
+const menuButtonStyleWithIcon = css`
+  margin-left: -16px;
 `;
 
 const menuToggleContainerStyle = css`
@@ -204,117 +214,122 @@ export const Menu = (props) => {
         </span>
       </button>
 
-      <nav className={[menuStyle, open ? menuOpenStyle : ' '].join(' ')}>
-        <ul className={menuListStyle}>
-          <li>
-            <button className={menuButtonStyle} onClick={() => setOpen(!open)}>
-              Terminal
-            </button>
-          </li>
-          <li>
-            <button onClick={aboutPressed} className={menuButtonStyle}>
-              About
-            </button>
-          </li>
-          <li>
-            <button onClick={contactPressed} className={menuButtonStyle}>
-              Contact
-            </button>
-          </li>
-          <li>
-            <button onClick={workPressed} className={menuButtonStyle}>
-              Work
-            </button>
-          </li>
-        </ul>
+      <div className={[menuStyle, open ? menuOpenStyle : ' '].join(' ')}>
+        <nav className={navStyle}>
+          <ul className={menuListStyle}>
+            <li>
+              <button
+                className={menuButtonStyle}
+                onClick={() => setOpen(!open)}
+              >
+                Terminal
+              </button>
+            </li>
+            <li>
+              <button onClick={aboutPressed} className={menuButtonStyle}>
+                About
+              </button>
+            </li>
+            <li>
+              <button onClick={contactPressed} className={menuButtonStyle}>
+                Contact
+              </button>
+            </li>
+            <li>
+              <button onClick={workPressed} className={menuButtonStyle}>
+                Work
+              </button>
+            </li>
+          </ul>
 
-        <ul
-          className={[menuListStyle, menuListSocialStyle].join(' ')}
-          style={{ paddingTop: 0 }}
-        >
-          <li>
-            <a
-              href="https://apihustle.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              Apihustle
-            </a>
-          </li>
+          <ul
+            className={[menuListStyle, menuListSocialStyle].join(' ')}
+            style={{ paddingTop: 0 }}
+          >
+            <li>
+              <a
+                href="https://apihustle.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                Apihustle
+              </a>
+            </li>
 
-          <li>
-            <a
-              href="https://clobbr.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              Clobbr
-            </a>
-          </li>
+            <li>
+              <a
+                href="https://clobbr.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                Clobbr
+              </a>
+            </li>
 
-          <li>
-            <a
-              href="https://crontap.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              Crontap
-            </a>
-          </li>
-        </ul>
+            <li>
+              <a
+                href="https://crontap.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                Crontap
+              </a>
+            </li>
+          </ul>
 
-        <ul
-          className={[
-            menuListStyle,
-            menuListLinkStyle,
-            menuListSocialStyle,
-          ].join(' ')}
-        >
-          <li>
-            <a
-              href="https://github.com/danmindru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              <GithubIcon /> @danmindru
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://stackoverflow.com/users/3263450/dan-mindru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              <StackoverflowIcon /> dan-mindru
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://twitter.com/d4m1n"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              <TwitterIcon /> @d4m1n
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://dk.linkedin.com/in/danmindru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={menuButtonStyle}
-            >
-              <LinkedinIcon /> Dan Mindru
-            </a>
-          </li>
-        </ul>
-      </nav>
+          <ul
+            className={[
+              menuListStyle,
+              menuListLinkStyle,
+              menuListSocialStyle,
+            ].join(' ')}
+          >
+            <li>
+              <a
+                href="https://github.com/danmindru"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle, menuButtonStyleWithIcon].join(' ')}
+              >
+                <GithubIcon /> @danmindru
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://stackoverflow.com/users/3263450/dan-mindru"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle, menuButtonStyleWithIcon].join(' ')}
+              >
+                <StackoverflowIcon /> dan-mindru
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/d4m1n"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle, menuButtonStyleWithIcon].join(' ')}
+              >
+                <TwitterIcon /> @d4m1n
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://dk.linkedin.com/in/danmindru"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle, menuButtonStyleWithIcon].join(' ')}
+              >
+                <LinkedinIcon /> Dan Mindru
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 };
