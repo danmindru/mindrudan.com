@@ -23,10 +23,30 @@ const menuStyle = css`
   right: 0;
   overflow: auto;
   transition: transform 0.8s;
-  background-color: rgba(251, 115, 121, 0.7);
+  background-color: rgba(251, 115, 121, 0.9);
   backdrop-filter: blur(3px);
   color: white;
   box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(121.28deg, #dc8400 0%, #ffffff 40.08%),
+      linear-gradient(140.54deg, #ff0000 0%, #0047ff 72.37%),
+      linear-gradient(121.28deg, #00e384 0%, #ff0000 100%),
+      linear-gradient(121.28deg, #fa00ff 0%, #00ff38 100%),
+      linear-gradient(127.43deg, #00f0ff 0%, #a80000 100%),
+      radial-gradient(100.47% 100% at 50% 100%, #70ff00 0%, #680199 100%),
+      linear-gradient(127.43deg, #b7d500 0%, #2200aa 100%);
+    background-blend-mode: darken, hue, overlay, color, color-dodge, difference,
+      normal;
+    z-index: -1;
+    opacity: 0.2;
+  }
 `;
 
 const menuListStyle = css`
@@ -54,9 +74,11 @@ const menuListStyle = css`
   }
 `;
 
-const menuListSocialStyle = css`
+const menuListLinkStyle = css`
   margin-top: auto;
+`;
 
+const menuListSocialStyle = css`
   li {
     &:first-child {
       margin-top: 16px;
@@ -206,7 +228,51 @@ export const Menu = (props) => {
           </li>
         </ul>
 
-        <ul className={[menuListStyle, menuListSocialStyle].join(' ')}>
+        <ul
+          className={[menuListStyle, menuListSocialStyle].join(' ')}
+          style={{ paddingTop: 0 }}
+        >
+          <li>
+            <a
+              href="https://apihustle.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={menuButtonStyle}
+            >
+              Apihustle
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://clobbr.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={menuButtonStyle}
+            >
+              Clobbr
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://crontap.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={menuButtonStyle}
+            >
+              Crontap
+            </a>
+          </li>
+        </ul>
+
+        <ul
+          className={[
+            menuListStyle,
+            menuListLinkStyle,
+            menuListSocialStyle,
+          ].join(' ')}
+        >
           <li>
             <a
               href="https://github.com/danmindru"
