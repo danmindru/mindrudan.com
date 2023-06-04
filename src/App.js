@@ -10,16 +10,29 @@ import { version } from '../package.json';
 import { forcedChalk } from './utils/forcedChalk';
 
 import { Menu } from './Menu';
+import { isDebugOn } from './utils/debug';
+import { Clear } from './Clear';
 import { renderCommand } from './utils/renderCommand';
-import { EOL } from './commands/command-constants';
+import { COMMAND_NAMES, EOL } from './commands/command-constants';
 import { whoami } from './commands/whoami';
 import { work } from './commands/work';
 import { contact } from './commands/contact';
 import { photo } from './commands/photo-ascii';
-import { screensaver } from './commands/private/screensaver';
+import { twitter } from './commands/twitter';
 
-import { isDebugOn } from './utils/debug';
-import { Clear } from './Clear';
+import { screensaver } from './commands/private/screensaver';
+import { alex } from './commands/private/alex';
+import { fuck } from './commands/private/fuck';
+import { noWay } from './commands/private/no-way';
+import { ls } from './commands/private/ls';
+import { cat } from './commands/private/cat';
+import { nano } from './commands/private/nano';
+import { vi } from './commands/private/vi';
+import { viExit } from './commands/private/viExit';
+import { rm } from './commands/private/rm';
+import { code } from './commands/private/code';
+import { pwd } from './commands/private/pwd';
+import { echo } from './commands/private/echo';
 
 const mainStyle = css`
   --terminal-padding: 16px;
@@ -106,10 +119,10 @@ export const App = () => {
   useEffect(() => {
     const bashme = new Bashme.Bashme({
       prompt: forcedChalk.bold.gray('mindrudan.com $ '),
-      welcomeMessage
+      welcomeMessage,
     });
 
-    const commands = [whoami(), contact(), photo(), work(bashme)];
+    const commands = [whoami(), contact(), photo(), work(bashme), twitter()];
     const customProvider = {
       getCommands: () => [
         {
@@ -125,7 +138,7 @@ export const App = () => {
               ...commands.map(renderCommand),
               EOL,
               'For more commands type `help`.',
-              EOL
+              EOL,
             ].join(EOL);
 
             if (isDebugOn()) {
@@ -133,11 +146,23 @@ export const App = () => {
             }
 
             return cmds;
-          }
+          },
         },
         ...commands,
-        screensaver
-      ]
+        screensaver,
+        alex,
+        fuck,
+        noWay,
+        rm,
+        code,
+        pwd,
+        echo,
+        ls(bashme),
+        cat(bashme),
+        nano(bashme, COMMAND_NAMES.NANO),
+        vi(bashme),
+        viExit,
+      ],
     };
 
     bashme.use(customProvider);

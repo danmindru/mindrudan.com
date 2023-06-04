@@ -10,7 +10,7 @@ export const whoami = () => {
 
       I'm web developer and designer, located in Copenhagen.
       Since as long as I can remember, I've been helping people start projects and get their ideas on the road.
-      That includes working in the telco, architecture, medical, digital signage, real-estate, hydrology (and more) industries.
+      That includes working in the fintech, telco, architecture, medical, digital signage, real-estate, hydrology (and more) industries.
 
 
 
@@ -18,7 +18,7 @@ export const whoami = () => {
       Drones are also something I dabble with, even though I'm not too good at flying them.
 
       --
-    `
+    `,
   };
 
   return command;

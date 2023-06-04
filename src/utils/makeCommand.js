@@ -1,10 +1,10 @@
-import { isDebugOn } from "./debug";
+import { isDebugOn } from './debug';
 
 /**
  * Makes a command with that can accept args
  * @param { string } command
  */
-export const makeCommand = (command) => (args): Promise<any> => {
+export const makeCommand = (command) => (args) => {
   // Send a command
   if (isDebugOn()) {
     console.log('commands args', args);

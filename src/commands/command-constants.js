@@ -5,7 +5,16 @@ export const COMMAND_NAMES = {
   WORK: 'work',
   CLEAR: 'clear',
   SCREENSAVER: 'screensaver',
-  HELP: 'help'
+  HELP: 'help',
+  TWITTER: 'twitter',
+  LS: 'ls',
+  CD: 'cd',
+  CAT: 'cat',
+  NANO: 'nano',
+  VI: 'vi',
+  RM: 'rm',
+  ECHO: 'echo',
+  PWD: 'pwd',
 };
 
 export const EOL = '\r\n';

@@ -33,7 +33,7 @@ GPR24: 00000078 fffffffb c0335be8 ef824000 ef825f80 c027bf68 c0335be8 ef824000`,
     '**bleep** [ef825f90] 0xef825f90',
     'LR [ef825fc0] 0xef825fc0',
     'Call Trace:',
-    forcedChalk.redBright('Kernel panic - not syncing: kernel stack overflow')
+    forcedChalk.redBright('Kernel panic - not syncing: kernel stack overflow'),
   ],
   [
     `root (hd0,0)
@@ -55,7 +55,7 @@ setuproot: moving /dev failed: No such file or directory
 setuproot: error mounting /proc: No such file or directory
 setuproot: error mounting /sys: No such file or directory
 switchroot: mount failed: No such file or directory`,
-    forcedChalk.red('Kernel panic - not syncing: Attempt to kill init!')
+    forcedChalk.red('Kernel panic - not syncing: Attempt to kill init!'),
   ],
   [
     `Unable to handle kernel paging request at virtual address 40025694 pgd = d7138000
@@ -108,7 +108,7 @@ Code: e58d8040 e58d0044 e3180020 13a0a000 (051ea004)`,
  [<c01d31b4>] (shrink_inactive_list+0x1e0/0x330) from [<c01d3704>] (shrink_zone+0x400/0x588)
  [<c01d3704>] (shrink_zone+0x400/0x588) from [<c01d3fd8>] (kswapd+0x594/0x970)
  [<c01d3fd8>] (kswapd+0x594/0x970) from [<c018e04c>] (kthread+0x80/0x88)
- [<c018e04c>] (kthread+0x80/0x88) from [<c01075c0>] (kernel_thread_exit+0x0/0x8)`
+ [<c018e04c>] (kthread+0x80/0x88) from [<c01075c0>] (kernel_thread_exit+0x0/0x8)`,
     // TODO: hmmm => 'Rebooting in 1 seconds.. Thanks
   ],
   [
@@ -137,7 +137,7 @@ Code: e58d8040 e58d0044 e3180020 13a0a000 (051ea004)`,
    <<EOE>>  [<ffffffff81509697>] ? menu_select+0xe7/0x2c0
    [<ffffffff815082d1>] cpuidle_idle_call+0xc1/0x280
    [<ffffffff8101322a>] cpu_idle+0xca/0x120
-   [<ffffffff8163aa9a>] start_secondary+0xd9/0xdb`
+   [<ffffffff8163aa9a>] start_secondary+0xd9/0xdb`,
   ],
   [
     `NFS client kernel crash because async task already queued hitting BUG_ON(RPC_IS_QUEUED(task)); in __rpc_execute`,
@@ -166,7 +166,7 @@ scsi_transport_sas raid_class ahci dm_mirror dm_region_hash dm_log dm_mod
 Code: db df 2e e1 f6 05 e0 26 02 00 40 0f 84 48 fe ff ff 0f b7 b3 d4 00 00 00 48 c7
 c7 94 39 21 a0 31 c0 e8 b9 df 2e e1 e9 2e fe ff ff <0f> 0b eb fe 0f b7 b7 d4 00 00 00
 31 c0 48 c7 c7 60 63 21 a0 e8`,
-    forcedChalk.yellow(`RIP [<ffffffffa01fe458>] __rpc_execute+0x278/0x2a0`)
+    forcedChalk.yellow(`RIP [<ffffffffa01fe458>] __rpc_execute+0x278/0x2a0`),
   ],
   [
     `general protection fault: 0000 [#1] SMP PTI`,
@@ -214,6 +214,6 @@ R13: ffff8e0f24abf978 R14: ffff8e0f2c990700 R15: ffff8e0f25822800
 FS:  0000000000000000(0000) GS:ffff8e0f3fc00000(0000) knlGS:0000000000000000
 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
 CR2: 00007fd8cccf7000 CR3: 000000005820a005 CR4: 00000000001606f0
----[ end trace 2c8e01f3f525c0f3 ]---`
-  ]
+---[ end trace 2c8e01f3f525c0f3 ]---`,
+  ],
 ];
