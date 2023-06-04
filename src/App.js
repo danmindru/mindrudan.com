@@ -33,6 +33,7 @@ import { rm } from './commands/private/rm';
 import { code } from './commands/private/code';
 import { pwd } from './commands/private/pwd';
 import { echo } from './commands/private/echo';
+import { luc } from './commands/private/luc';
 
 const mainStyle = css`
   --terminal-padding: 16px;
@@ -87,7 +88,11 @@ const terminalOpenStyle = css`
   }
 `;
 
-const welcomeMessage = `\nWelcome to mindrudan.com v${version}  🎩 ✨ \nType man to see notes on usage.`; // TODO: "or man <command>"
+const welcomeMessage = forcedChalk.yellow(
+  `\nWelcome to mindrudan.com ${forcedChalk.bold(
+    `v${version}`
+  )}  🎩 ✨ \nType ${forcedChalk.bold('man')} to see notes on usage.`
+); // TODO: "or man <command>"
 
 const makeRunCommand = (bashmeInstance) => (commandName) => {
   if (commandName === 'clear') {
@@ -167,6 +172,7 @@ export const App = () => {
         ...commands,
         screensaver,
         alex,
+        luc,
         fuck,
         noWay,
         rm,
