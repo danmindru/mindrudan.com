@@ -148,6 +148,14 @@ export const App = () => {
             return cmds;
           },
         },
+        {
+          name: 'menu',
+          description: 'Open the menu.',
+          run: () => {
+            setOpen(true);
+            return '';
+          },
+        },
         ...commands,
         screensaver,
         alex,
