@@ -122,7 +122,22 @@ export const App = () => {
       welcomeMessage,
     });
 
-    const commands = [whoami(), contact(), photo(), work(bashme), twitter()];
+    const commands = [
+      whoami(),
+      contact(),
+      photo(),
+      work(bashme),
+      twitter(),
+      {
+        name: 'menu',
+        description: 'open the menu.',
+        run: () => {
+          setOpen(true);
+          return '';
+        },
+      },
+    ];
+
     const customProvider = {
       getCommands: () => [
         {
@@ -148,14 +163,7 @@ export const App = () => {
             return cmds;
           },
         },
-        {
-          name: 'menu',
-          description: 'Open the menu.',
-          run: () => {
-            setOpen(true);
-            return '';
-          },
-        },
+
         ...commands,
         screensaver,
         alex,
