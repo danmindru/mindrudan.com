@@ -97,6 +97,18 @@ const spotifyStyle = css`
   z-index: 2;
   width: 320px;
   height: 152px;
+  transition: all 0.5s;
+  transform: translateX(0);
+  opacity: 1;
+`;
+
+const spotifyStyleHidden = css`
+  transform: translateY(100px);
+  opacity: 0;
+`;
+
+const spotifyStyleMenuOpen = css`
+  transform: translateX(-220px);
 `;
 
 const welcomeMessage = forcedChalk.yellow(
@@ -349,10 +361,12 @@ export const App = () => {
       />
 
       <div
-        className={spotifyStyle}
-        style={{
-          display: musicPlaying ? 'block' : 'none',
-        }}
+        className={[
+          musicPlaying
+            ? spotifyStyle
+            : [spotifyStyle, spotifyStyleHidden].join(' '),
+          open ? spotifyStyleMenuOpen : '',
+        ].join(' ')}
       >
         <div id="embed-iframe"></div>
       </div>
