@@ -18,6 +18,8 @@ import { whoami } from './commands/whoami';
 import { work } from './commands/work';
 import { contact } from './commands/contact';
 import { photo } from './commands/photo-ascii';
+import { vinyl } from './commands/vinyl-ascii';
+import { music } from './commands/music-ascii';
 import { twitter } from './commands/twitter';
 
 import { screensaver } from './commands/private/screensaver';
@@ -88,6 +90,15 @@ const terminalOpenStyle = css`
   }
 `;
 
+const spotifyStyle = css`
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 320px;
+  height: 152px;
+`;
+
 const welcomeMessage = forcedChalk.yellow(
   `\nWelcome to mindrudan.com ${forcedChalk.bold(
     `v${version}`
@@ -103,9 +114,20 @@ const makeRunCommand = (bashmeInstance) => (commandName) => {
   bashmeInstance.cli.processInput();
 };
 
+const reverseString = (str) => {
+  if (str === '') return '';
+  else return reverseString(str.substr(1)) + str.charAt(0);
+};
+
+const P1 = '54nptB866SxZM8U45RfLFZ';
+const P2 = '0D8PQH1wULVuYV6bQZedEc';
+const P3 = '3BNneHSpDUEp5xs5l0NCKm';
+
 export const App = () => {
   const terminalDom = useRef(null);
   const [open, setOpen] = useState(false);
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  const [playlistUrl, setPlaylistUrl] = useState(P1);
   const [bashmeInstance, setBashmeInstance] = useState(null);
 
   const onTerminalPress = () => {
@@ -120,6 +142,62 @@ export const App = () => {
       activeElement.blur();
     }
   };
+
+  const playMusic = () => {
+    if (!document.getElementById('spotify-iframe-api')) {
+      const script = document.createElement('script');
+      script.src = 'https://open.spotify.com/embed-podcast/iframe-api/v1';
+      script.async = true;
+      script.id = 'spotify-iframe-api';
+      document.body.appendChild(script);
+    }
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      const element = document.getElementById('embed-iframe');
+      const options = {
+        height: 152,
+        uri: `spotify:playlist:${window.playlistUrl}`,
+      };
+
+      const callback = (EmbedController) => {
+        console.log('EmbedController', EmbedController);
+        window.spotifyEmbedController = EmbedController;
+        EmbedController.play();
+
+        // EmbedController.addListener('playback_update', (e) => {
+        //   if (e && e.data.isPaused && musicPlaying === true) {
+        //     setMusicPlaying(false);
+        //   }
+
+        //   if (e && !e.data.isPaused && musicPlaying === false) {
+        //     setMusicPlaying(true);
+        //   }
+        // });
+      };
+
+      IFrameAPI.createController(element, options, callback);
+    };
+
+    if (window.spotifyEmbedController) {
+      window.spotifyEmbedController.loadUri(
+        `spotify:playlist:${window.playlistUrl}`
+      );
+      window.spotifyEmbedController.play();
+    }
+
+    setMusicPlaying(true);
+  };
+
+  const pauseMusic = () => {
+    if (window.spotifyEmbedController) {
+      window.spotifyEmbedController.destroy();
+      setMusicPlaying(false);
+    }
+  };
+
+  useEffect(() => {
+    window.playlistUrl = playlistUrl;
+  }, [playlistUrl]);
 
   useEffect(() => {
     const bashme = new Bashme.Bashme({
@@ -184,6 +262,42 @@ export const App = () => {
         nano(bashme, COMMAND_NAMES.NANO),
         vi(bashme),
         viExit,
+        {
+          ...vinyl,
+          run: () => {
+            setPlaylistUrl(P2);
+            playMusic();
+            return vinyl.run();
+          },
+        },
+        {
+          ...music,
+          run: () => {
+            setPlaylistUrl(P3);
+            playMusic();
+            return music.run();
+          },
+        },
+        {
+          name: 'favorite',
+          description: 'There are many',
+          run: (args) => {
+            if (args._?.includes('vinyl')) {
+              setPlaylistUrl(P1);
+              playMusic();
+              return reverseString(vinyl.run());
+            }
+          },
+          options: ['vinyl'],
+        },
+        {
+          name: 'novinyl',
+          description: `No more.`,
+          run: () => {
+            pauseMusic();
+            return '😟';
+          },
+        },
       ],
     };
 
@@ -233,6 +347,15 @@ export const App = () => {
         runCommand={makeRunCommand(bashmeInstance)}
         bashme={bashmeInstance}
       />
+
+      <div
+        className={spotifyStyle}
+        style={{
+          display: musicPlaying ? 'block' : 'none',
+        }}
+      >
+        <div id="embed-iframe"></div>
+      </div>
     </section>
   );
 };

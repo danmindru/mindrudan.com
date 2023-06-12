@@ -2,6 +2,8 @@ export const COMMAND_NAMES = {
   WHOAMI: 'whoami',
   CONTACT: 'contact',
   PHOTO: 'photo',
+  VINYL: 'vinyl',
+  MUSIC: 'music',
   WORK: 'work',
   CLEAR: 'clear',
   SCREENSAVER: 'screensaver',
