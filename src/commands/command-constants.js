@@ -11,6 +11,7 @@ export const COMMAND_NAMES = {
   TWITTER: 'twitter',
   LS: 'ls',
   CD: 'cd',
+  CODE: 'vscode',
   CAT: 'cat',
   NANO: 'nano',
   VI: 'vi',

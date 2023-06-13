@@ -7,10 +7,14 @@ import { kernelPanics } from '../../panics/panics';
 
 const acceptedFiles = [...files, ...hiddenFiles];
 
-export const cat = (bashme, commandName = COMMAND_NAMES.CAT) => {
+export const cat = (
+  bashme,
+  commandName = COMMAND_NAMES.CAT,
+  commandDesc = 'concatenate files and print on the standard output'
+) => {
   const command = {
     name: commandName,
-    description: 'concatenate files and print on the standard output',
+    description: commandDesc,
     run: async (args) => {
       if (!args._?.length) {
         return stripIndents`

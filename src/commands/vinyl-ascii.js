@@ -2,7 +2,7 @@ import { COMMAND_NAMES } from './command-constants';
 
 export const vinyl = {
   name: COMMAND_NAMES.VINYL,
-  description: ``,
+  description: `spin it`,
   run: () => {
     return `
 ^^^^^^^^^^^^^^'  .',II!++I"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -39,9 +39,15 @@ import { luc } from './commands/private/luc';
 
 const mainStyle = css`
   --terminal-padding: 16px;
+  --page-margin: 96px;
   background-color: #444;
   position: relative;
-  overflow: hidden;
+
+  margin-bottom: var(--page-margin);
+
+  @media only screen and (min-width: 640px) {
+    --page-margin: 0px;
+  }
 
   .terminal {
     width: calc(100vw - var(--terminal-padding) * 4);
@@ -61,7 +67,7 @@ const terminalStyle = css`
   position: relative;
   left: 0;
   z-index: 1;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 
   :after {
@@ -233,11 +239,13 @@ export const App = () => {
       },
     ];
 
+    bashme.use(new Bashme.GitHub('danmindru'));
+
     const customProvider = {
       getCommands: () => [
         {
           name: 'man',
-          description: 'List available commands and their description.',
+          description: 'list available commands and their description',
           run: (args) => {
             // TODO: render args for each command
             // if (Object.keys(args).length) {}
@@ -271,15 +279,26 @@ export const App = () => {
         echo,
         ls(bashme),
         cat(bashme),
-        nano(bashme, COMMAND_NAMES.NANO),
+        nano(
+          bashme,
+          COMMAND_NAMES.NANO,
+          'simple text editor in the style of the Alpine Composer'
+        ),
         vi(bashme),
-        viExit,
         {
           ...vinyl,
           run: () => {
             setPlaylistUrl(P2);
             playMusic();
             return vinyl.run();
+          },
+        },
+        {
+          name: 'novinyl',
+          description: `no more`,
+          run: () => {
+            pauseMusic();
+            return '😟';
           },
         },
         {
@@ -292,7 +311,7 @@ export const App = () => {
         },
         {
           name: 'favorite',
-          description: 'There are many',
+          description: 'there are many',
           run: (args) => {
             if (args._?.includes('vinyl')) {
               setPlaylistUrl(P1);
@@ -302,19 +321,12 @@ export const App = () => {
           },
           options: ['vinyl'],
         },
-        {
-          name: 'novinyl',
-          description: `No more.`,
-          run: () => {
-            pauseMusic();
-            return '😟';
-          },
-        },
+
+        viExit,
       ],
     };
 
     bashme.use(customProvider);
-    bashme.use(new Bashme.GitHub('danmindru'));
 
     bashme.show(terminalDom.current);
     bashme.on('command', (cmd, args) => {
