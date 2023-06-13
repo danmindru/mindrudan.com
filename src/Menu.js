@@ -178,7 +178,7 @@ const menuToggleStyleOpen = css`
 `;
 
 export const Menu = (props) => {
-  const { open, setOpen, runCommand } = props;
+  const { open, setOpen, runCommand, musicPlaying, toggleMusic } = props;
 
   const aboutPressed = async () => {
     setOpen(false);
@@ -217,6 +217,16 @@ export const Menu = (props) => {
       <div className={[menuStyle, open ? menuOpenStyle : ' '].join(' ')}>
         <nav className={navStyle}>
           <ul className={menuListStyle}>
+            {musicPlaying && (
+              <li>
+                <button className={menuButtonStyle} onClick={toggleMusic}>
+                  Stop Music{' '}
+                  <span role="img" aria-label="Sad Emoji">
+                    😞
+                  </span>
+                </button>
+              </li>
+            )}
             <li>
               <button
                 className={menuButtonStyle}

@@ -1,8 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { css } from 'emotion';
+import { useMediaQuery } from 'react-responsive';
 
 import 'bashme/dist/xterm.css';
 import * as Bashme from 'bashme';
+import { fit } from 'xterm/lib/addons/fit/fit';
 
 import './App.css';
 import { version } from '../package.json';
@@ -39,24 +41,35 @@ import { luc } from './commands/private/luc';
 
 const mainStyle = css`
   --terminal-padding: 16px;
-  --page-margin: 96px;
-  background-color: #444;
+
+  background-color: var(--terminal-bg);
   position: relative;
-
-  margin-bottom: var(--page-margin);
-
-  @media only screen and (min-width: 640px) {
-    --page-margin: 0px;
-  }
+  display: flex;
+  flex-direction: column;
 
   .terminal {
     width: calc(100vw - var(--terminal-padding) * 4);
-    height: calc(100vh - var(--terminal-padding) * 2);
+    height: calc(
+      100vh - var(--terminal-padding) * 2 - var(--page-margin-bottom)
+    );
     padding: var(--terminal-padding) calc(var(--terminal-padding) * 2);
 
     .xterm-viewport {
       overflow-y: auto;
+      width: 100%;
     }
+  }
+
+  .xterm .xterm-viewport {
+    background-color: var(--terminal-bg);
+  }
+
+  footer {
+    position: relative;
+    z-index: 3;
+    background-color: var(--terminal-bg);
+    height: var(--page-margin-bottom);
+    width: 100%;
   }
 `;
 
@@ -67,7 +80,7 @@ const terminalStyle = css`
   position: relative;
   left: 0;
   z-index: 1;
-  min-height: 100vh;
+  height: 100%;
   overflow: hidden;
 
   :after {
@@ -98,7 +111,7 @@ const terminalOpenStyle = css`
 
 const spotifyStyle = css`
   position: absolute;
-  bottom: 16px;
+  bottom: var(--page-margin-bottom);
   right: 16px;
   z-index: 2;
   width: 320px;
@@ -106,6 +119,11 @@ const spotifyStyle = css`
   transition: all 0.5s;
   transform: translateX(0);
   opacity: 1;
+  z-index: 3;
+
+  @media (min-width: 768px) {
+    bottom: 16px;
+  }
 `;
 
 const spotifyStyleHidden = css`
@@ -142,6 +160,9 @@ const P2 = '0D8PQH1wULVuYV6bQZedEc';
 const P3 = '3BNneHSpDUEp5xs5l0NCKm';
 
 export const App = () => {
+  const isLargeish = useMediaQuery({
+    query: `(min-width: 768px)`,
+  });
   const terminalDom = useRef(null);
   const [open, setOpen] = useState(false);
   const [musicPlaying, setMusicPlaying] = useState(false);
@@ -160,6 +181,33 @@ export const App = () => {
       activeElement.blur();
     }
   };
+
+  const updateTheme = useCallback(
+    (bashme, options = {}) => {
+      const terminal = bashme.cli.terminal || bashmeInstance.cli.terminal;
+
+      const bgColor = getComputedStyle(document.body).getPropertyValue(
+        '--terminal-bg'
+      );
+
+      terminal.setOption('theme', {
+        convertEol: true,
+        cursorBlink: true,
+        cursorStyle: 'underline',
+        fontFamily:
+          'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+        fontSize: 12,
+        background: bgColor,
+        ...options,
+      });
+
+      if (options.fontSize) {
+        terminal.setOption('fontSize', options.fontSize);
+        fit(terminal);
+      }
+    },
+    [bashmeInstance]
+  );
 
   const playMusic = () => {
     if (!document.getElementById('spotify-iframe-api')) {
@@ -211,6 +259,13 @@ export const App = () => {
       window.spotifyEmbedController.destroy();
       setMusicPlaying(false);
     }
+  };
+
+  const onFooterClick = (e) => {
+    e.preventDefault();
+
+    const xtermViewport = document.querySelector('.xterm-viewport');
+    xtermViewport.scrollTo(0, 999999);
   };
 
   useEffect(() => {
@@ -336,6 +391,7 @@ export const App = () => {
     });
 
     setBashmeInstance(bashme);
+    updateTheme(bashme);
   }, []);
 
   useEffect(() => {
@@ -350,27 +406,39 @@ export const App = () => {
     }
   }, [open]);
 
+  useEffect(() => {
+    if (!bashmeInstance) {
+      return;
+    }
+
+    if (isLargeish) {
+      updateTheme(bashmeInstance, {
+        fontSize: 12,
+      });
+    } else {
+      updateTheme(bashmeInstance, {
+        fontSize: 9.5,
+      });
+    }
+  }, [isLargeish, updateTheme, bashmeInstance]);
+
   return (
-    <section className={mainStyle}>
-      <main
-        ref={terminalDom}
-        className={[terminalStyle, open ? terminalOpenStyle : ''].join(' ')}
-        onClick={onTerminalPress}
-      />
-
-      {bashmeInstance && (
-        <Menu
-          open={open}
-          setOpen={setOpen}
-          runCommand={makeRunCommand(bashmeInstance)}
+    <>
+      <section className={mainStyle}>
+        <main
+          ref={terminalDom}
+          className={[terminalStyle, open ? terminalOpenStyle : ''].join(' ')}
+          onClick={onTerminalPress}
         />
-      )}
 
-      <Clear
-        menuOpen={open}
-        runCommand={makeRunCommand(bashmeInstance)}
-        bashme={bashmeInstance}
-      />
+        <Clear
+          menuOpen={open}
+          runCommand={makeRunCommand(bashmeInstance)}
+          bashme={bashmeInstance}
+        />
+
+        <footer onClick={onFooterClick}></footer>
+      </section>
 
       <div
         className={[
@@ -382,6 +450,16 @@ export const App = () => {
       >
         <div id="embed-iframe"></div>
       </div>
-    </section>
+
+      {bashmeInstance && (
+        <Menu
+          open={open}
+          setOpen={setOpen}
+          musicPlaying={musicPlaying}
+          toggleMusic={pauseMusic}
+          runCommand={makeRunCommand(bashmeInstance)}
+        />
+      )}
+    </>
   );
 };

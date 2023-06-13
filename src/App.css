@@ -18,3 +18,12 @@
   background: rgba(70, 70, 70, 0.61);
   -webkit-border-radius: 100px;
 }
+
+body,
+html {
+  --terminal-bg: rgb(6, 13, 28);
+  --page-margin-bottom: 96px;
+
+  overflow: hidden;
+  height: 100vh;
+}
