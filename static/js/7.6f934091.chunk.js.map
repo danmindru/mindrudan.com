@@ -1,1 +1,0 @@
-{"version":3,"sources":["commands/private/assets/secrets.js"],"names":["secrets","stripIndents"],"mappings":"6UAEO,IAAMA,EAAUC,YAAH","file":"static/js/7.6f934091.chunk.js","sourcesContent":["import { stripIndents } from 'common-tags';\n\nexport const secrets = stripIndents`\n123456Password*\nd4n1s4w3s0m3\n\ncredit card:\n4263 9826 4026 9299\n04/26 738\n`;\n"],"sourceRoot":""}
