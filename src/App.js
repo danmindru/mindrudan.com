@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { css } from 'emotion';
 import { useMediaQuery } from 'react-responsive';
+import { isAndroid } from 'react-device-detect';
 
 import 'bashme/dist/xterm.css';
 import * as Bashme from 'bashme';
@@ -389,6 +390,15 @@ export const App = () => {
         console.log(cmd, args);
       }
     });
+
+    if (isAndroid) {
+      // HACK: Android does not fire keydown events for the terminal. Using onData instead. The proper fix could possibly be to use onData in the cli class instead and handle it that way for all devices.
+      bashme.cli.terminal.onData(async (data) => {
+        if (data.trim().length > 0) {
+          await bashme.cli.input(data);
+        }
+      });
+    }
 
     setBashmeInstance(bashme);
     updateTheme(bashme);
