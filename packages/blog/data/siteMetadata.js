@@ -9,7 +9,7 @@ const siteMetadata = {
     "A collection of Dan's thought on web development, design, building in public and sometimes SEO. Not quite a blog, not quite a tweet. It's a thought, but written down.",
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://mindrudan.com/blog',
+  siteUrl: 'https://blog.mindrudan.com',
   siteRepo: '',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
