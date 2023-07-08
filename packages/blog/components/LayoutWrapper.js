@@ -1,19 +1,30 @@
-import { Inter } from '@next/font/google'
-import SectionContainer from './SectionContainer'
-import Footer from './Footer'
-import Header from './Header'
-const inter = Inter({
+import { Rubik } from '@next/font/google';
+import SectionContainer from './SectionContainer';
+import Footer from './Footer';
+import Header from './Header';
+import { BlurBg } from './blurBg';
+import { SoftBg } from './softBg';
+const rubik = Rubik({
   subsets: ['latin'],
-})
+});
 const LayoutWrapper = ({ children }) => {
   return (
     <SectionContainer>
-      <div className={`${inter.className} flex h-screen flex-col justify-between font-sans`}>
+      <BlurBg
+        variant="primary"
+        className="absolute -left-72 -top-72 w-3/4 opacity-60"
+      />
+      <SoftBg />
+
+      <div
+        className={`${rubik.className} flex h-screen flex-col justify-between font-sans`}
+      >
         <Header />
+
         <main className="mb-auto">{children}</main>
         <Footer />
       </div>
     </SectionContainer>
-  )
-}
-export default LayoutWrapper
+  );
+};
+export default LayoutWrapper;

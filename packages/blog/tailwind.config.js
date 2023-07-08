@@ -1,6 +1,6 @@
 // @ts-check
-const { fontFamily } = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+const { fontFamily } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 // ../node_modules/pliny/dist/**/*.mjs is needed for monorepo setup
 /** @type {import("tailwindcss/types").Config } */
@@ -28,10 +28,10 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
+        sans: ['Rubik', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
+        primary: colors.rose,
         gray: colors.neutral,
       },
       typography: (theme) => ({
@@ -46,13 +46,13 @@ module.exports = {
               code: { color: theme('colors.primary.400') },
             },
             h1: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              fontWeight: '400',
+              letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.gray.900'),
             },
             h2: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              fontWeight: '400',
+              letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.gray.900'),
             },
             h3: {
@@ -114,13 +114,13 @@ module.exports = {
               code: { color: theme('colors.primary.400') },
             },
             h1: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              fontWeight: '400',
+              letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.gray.100'),
             },
             h2: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              fontWeight: '400',
+              letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.gray.100'),
             },
             h3: {
@@ -168,4 +168,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-}
+};

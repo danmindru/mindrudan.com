@@ -1,6 +1,6 @@
 const headerNavLinks = [
   {
-    href: '/blog',
+    href: '/articles',
     title: 'All thoughts',
   },
   {

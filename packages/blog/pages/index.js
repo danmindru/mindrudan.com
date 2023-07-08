@@ -6,6 +6,7 @@ import { formatDate } from 'pliny/utils/formatDate';
 import { sortedBlogPost, allCoreContent } from 'pliny/utils/contentlayer';
 import { NewsletterForm } from 'pliny/ui/NewsletterForm';
 import { allBlogs } from 'contentlayer/generated';
+import { SoftBg } from '@/components/softBg';
 const MAX_DISPLAY = 5;
 export const getStaticProps = async () => {
   const sortedPosts = sortedBlogPost(allBlogs);
@@ -23,22 +24,37 @@ export default function Home({ posts }) {
         title={siteMetadata.title}
         description={siteMetadata.description}
       />
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
+      <div className="flex flex-col">
+        <div className="space-y-2 pb-8 pt-6 md:space-y-2">
+          <h1 className="text-2xl leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+            Latest posts
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
           </p>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+
+        <ul className="flex flex-col gap-2">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post;
             return (
-              <li key={slug} className="py-12">
-                <article>
+              <li
+                key={slug}
+                className="fancyGlass group relative flex items-center justify-between gap-1 overflow-hidden rounded-md p-4 shadow-sm transition-shadow duration-1000 hover:shadow-xl sm:p-8"
+              >
+                <div className="bg-secondary-100/90 absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg dark:bg-black/40" />
+
+                <SoftBg
+                  variant="secondary"
+                  className="h-96 w-96 opacity-10 transition-all duration-1000 group-hover:scale-150 group-hover:opacity-100"
+                />
+                <SoftBg
+                  variant="secondary"
+                  className="-right-1/2 h-96 w-96 opacity-10 transition-all duration-1000 group-hover:scale-150 group-hover:opacity-100"
+                />
+
+                <article className="relative">
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
                       <dt className="sr-only">Published on</dt>
@@ -51,9 +67,9 @@ export default function Home({ posts }) {
                     <div className="space-y-5 xl:col-span-3">
                       <div className="space-y-6">
                         <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                          <h2 className="relative z-20 text-2xl font-bold leading-8 tracking-tight">
                             <Link
-                              href={`/blog/${slug}`}
+                              href={`/articles/${slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
                               {title}
@@ -71,8 +87,8 @@ export default function Home({ posts }) {
                       </div>
                       <div className="text-base font-medium leading-6">
                         <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          href={`/articles/${slug}`}
+                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 relative z-20"
                           aria-label={`Read "${title}"`}
                         >
                           Read more &rarr;
@@ -80,6 +96,11 @@ export default function Home({ posts }) {
                       </div>
                     </div>
                   </div>
+
+                  <Link
+                    href={`/articles/${slug}`}
+                    className="absolute left-0 top-0 z-10 h-full w-full"
+                  ></Link>
                 </article>
               </li>
             );
@@ -87,9 +108,9 @@ export default function Home({ posts }) {
         </ul>
       </div>
       {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
+        <div className="mt-10 flex justify-end text-base font-medium leading-6">
           <Link
-            href="/blog"
+            href="/articles"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
             aria-label="All posts"
           >
@@ -99,7 +120,7 @@ export default function Home({ posts }) {
       )}
       {/* {siteMetadata.newsletter.provider && (
         <div className="flex items-center justify-center pt-4">
-          <NewsletterForm apiUrl={'/blog/api/newsletter'} />
+          <NewsletterForm apiUrl={'/articles/api/newsletter'} />
         </div>
       )} */}
     </>

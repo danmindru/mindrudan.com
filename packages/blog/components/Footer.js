@@ -1,9 +1,10 @@
 import Link from './Link';
 import siteMetadata from '@/data/siteMetadata';
 import SocialIcon from '@/components/social-icons';
+import { SoftBg } from './softBg';
 export default function Footer() {
   return (
-    <footer>
+    <footer className="relative flex min-h-[20rem] flex-col items-center justify-center">
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
           <SocialIcon
@@ -28,6 +29,8 @@ export default function Footer() {
           <Link href="https://mindrudan.com">mindrudan.com</Link>
         </div>
       </div>
+
+      <SoftBg className="h-[20rem] w-screen" />
     </footer>
   );
 }
