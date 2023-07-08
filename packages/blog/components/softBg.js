@@ -13,7 +13,7 @@ export const SoftBg = ({ className, variant }) => {
       aria-hidden="true"
       className={clsx(
         className,
-        'absolute left-0 top-0 -z-10 h-full w-full max-w-none transform-gpu blur-3xl'
+        'absolute left-0 top-0 -z-10 h-full w-full max-w-none transform-gpu opacity-30 blur-3xl dark:opacity-90'
       )}
     >
       <path

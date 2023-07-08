@@ -5,7 +5,7 @@ export const BlurBg = ({ className }) => {
     <svg
       viewBox="0 0 1024 1024"
       aria-hidden="true"
-      className={clsx(className, 'absolute -z-10')}
+      className={clsx(className, 'absolute -z-10 opacity-30 dark:opacity-90')}
     >
       <circle
         cx="512"
