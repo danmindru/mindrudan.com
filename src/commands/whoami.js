@@ -9,7 +9,7 @@ export const whoami = () => {
       --
 
       I'm web developer and designer, located in Copenhagen.
-      Since as long as I can remember, I've been helping people start projects and get their ideas on the road.
+      Since as long as I can remember, I've been helping people start projects and get their ideas off the ground.
       That includes working in the fintech, telco, architecture, medical, digital signage, real-estate, hydrology (and more) industries.
 
 
