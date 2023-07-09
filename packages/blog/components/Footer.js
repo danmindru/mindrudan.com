@@ -4,7 +4,7 @@ import SocialIcon from '@/components/social-icons';
 import { SoftBg } from './softBg';
 export default function Footer() {
   return (
-    <footer className="relative flex min-h-[20rem] flex-col items-center justify-center">
+    <footer className="relative flex min-h-[20rem] flex-col items-center justify-center overflow-hidden md:overflow-visible">
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
           <SocialIcon
@@ -22,7 +22,8 @@ export default function Footer() {
           <div>{siteMetadata.author}</div>
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
+        </div>
+        <div className="mb-8 text-sm text-gray-500/70 dark:text-gray-400/70">
           <Link href="/">{siteMetadata.title}</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
