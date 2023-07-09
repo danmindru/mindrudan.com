@@ -10,7 +10,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://blog.mindrudan.com',
-  siteRepo: '',
+  siteRepo: 'https://github.com/danmindru/mindrudan.com',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/ogImg.png',
