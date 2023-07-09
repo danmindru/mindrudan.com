@@ -12,7 +12,7 @@ const LayoutWrapper = ({ children }) => {
     <SectionContainer>
       <BlurBg
         variant="primary"
-        className="absolute -left-72 -top-72 w-3/4 opacity-60"
+        className="absolute -left-72 -top-72 w-3/4 opacity-30 dark:opacity-60"
       />
       <SoftBg />
 

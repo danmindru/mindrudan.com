@@ -78,12 +78,12 @@ export default function ListLayout({
           </h1>
           <div className="relative max-w-lg">
             <label>
-              <span className="sr-only">Search articles</span>
+              <span className="sr-only">Search...</span>
               <input
-                aria-label="Search articles"
+                aria-label="Search..."
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Search articles"
+                placeholder="Search..."
                 className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
               />
             </label>
@@ -106,9 +106,9 @@ export default function ListLayout({
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((post) => {
-            const { path, date, title, summary, tags } = post;
+            const { slug, date, title, summary, tags } = post;
             return (
-              <li key={path} className="py-4">
+              <li key={slug} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                   <dl>
                     <dt className="sr-only">Published on</dt>
@@ -122,7 +122,7 @@ export default function ListLayout({
                     <div>
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
                         <Link
-                          href={`/${path}`}
+                          href={`/articles/${slug}`}
                           className="text-gray-900 dark:text-gray-100"
                         >
                           {title}

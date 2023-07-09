@@ -34,7 +34,7 @@ export default function Home({ posts }) {
           </p>
         </div>
 
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-4 md:gap-6">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post;
@@ -43,18 +43,18 @@ export default function Home({ posts }) {
                 key={slug}
                 className="fancyGlass group relative flex items-center justify-between gap-1 overflow-hidden rounded-md p-4 shadow-sm transition-shadow duration-1000 hover:shadow-xl sm:p-8"
               >
-                <div className="bg-secondary-100/90 absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg dark:bg-black/40" />
+                <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white/40 backdrop-blur-lg dark:bg-black/40" />
 
                 <SoftBg
                   variant="secondary"
-                  className="h-96 w-96 opacity-10 transition-all duration-1000 group-hover:scale-150 group-hover:opacity-100"
+                  className="h-96 w-96 opacity-0 transition-all duration-1000 group-hover:scale-150 dark:opacity-10 dark:group-hover:opacity-100"
                 />
                 <SoftBg
                   variant="secondary"
-                  className="-right-1/2 h-96 w-96 opacity-10 transition-all duration-1000 group-hover:scale-150 group-hover:opacity-100"
+                  className="-right-1/2 h-96 w-96 opacity-0 transition-all duration-1000 group-hover:scale-150 dark:opacity-10 dark:group-hover:opacity-100"
                 />
 
-                <article className="relative">
+                <article className="relative w-full">
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
                       <dt className="sr-only">Published on</dt>
@@ -76,12 +76,12 @@ export default function Home({ posts }) {
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {tags.map((tag) => (
+                            {tags.slice(0, 5).map((tag) => (
                               <Tag key={tag} text={tag} />
                             ))}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        <div className="prose max-w-none whitespace-pre-line text-gray-500 dark:text-gray-400">
                           {summary}
                         </div>
                       </div>

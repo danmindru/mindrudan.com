@@ -1,23 +1,23 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import readingTime from 'reading-time'
-import path from 'path'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import readingTime from 'reading-time';
+import path from 'path';
 // Remark packages
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
   remarkImgToJsx,
   extractTocHeadings,
-} from 'pliny/mdx-plugins.js'
+} from 'pliny/mdx-plugins.js';
 // Rehype packages
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
-import rehypeCitation from 'rehype-citation'
-import rehypePrismPlus from 'rehype-prism-plus'
-import rehypePresetMinify from 'rehype-preset-minify'
-const root = process.cwd()
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeKatex from 'rehype-katex';
+import rehypeCitation from 'rehype-citation';
+import rehypePrismPlus from 'rehype-prism-plus';
+import rehypePresetMinify from 'rehype-preset-minify';
+const root = process.cwd();
 const computedFields = {
   readingTime: {
     type: 'json',
@@ -29,7 +29,9 @@ const computedFields = {
   },
   path: {
     type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath,
+    resolve: (doc) => {
+      return doc._raw.flattenedPath;
+    },
   },
   filePath: {
     type: 'string',
@@ -39,7 +41,7 @@ const computedFields = {
     type: 'string',
     resolve: (doc) => extractTocHeadings(doc.body.raw),
   },
-}
+};
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/**/*.mdx',
@@ -91,7 +93,7 @@ export const Blog = defineDocumentType(() => ({
     },
   },
   computedFields,
-}))
+}));
 export const Authors = defineDocumentType(() => ({
   name: 'Authors',
   filePathPattern: 'authors/**/*.mdx',
@@ -127,7 +129,7 @@ export const Authors = defineDocumentType(() => ({
     },
   },
   computedFields,
-}))
+}));
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Authors],
@@ -159,4 +161,4 @@ export default makeSource({
       rehypePresetMinify,
     ],
   },
-})
+});
