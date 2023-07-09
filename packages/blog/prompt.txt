@@ -1,0 +1,107 @@
+I'll give some text content.
+
+you will create a mdx file for it.
+
+Let me show you an example. for the following content:
+
+{start content}
+~10 days ago wrote my 1st tweet on http://mrrartpro.com #buildinpublic
+
+Only had a pitch & a
+@lmsqueezy
+ pre-order link.
+
+day 1. Pre order #5
+day 2. Website
+day 3. PoC
+day 5. Pre order #20. Develop
+day 9. Design
+day 10. Onboarding first beta users to get feedback
+
+What a ride!
+Image
+Image
+Image
+Image
+2:08 PM · Jun 22, 2023
+·
+6,724
+ Views
+View Tweet analytics
+7
+ Retweets
+3
+ Quotes
+65
+ Likes
+14
+ Bookmarks
+{end content}
+
+
+you should respond with:
+
+{start response}
+
+---
+title: 'My Building Public Journey with MRRArt Pro! 🚀'
+date: '2023-06-22'
+tags:
+  [
+    'MRRArt-Pro',
+    'buildinpublic',
+    'product-launch',
+    'pre-order',
+    'website-development',
+    'proof-of-concept',
+    'design',
+    'user-feedback',
+  ]
+draft: false
+summary: ~10 days ago wrote my 1st tweet on MRRArt Pro!
+
+  Only had a pitch & a @lmsqueezy pre-order link. Here's how it went...
+bookmarks: 14
+retweets: 7
+likes: 65
+---
+
+<ContentPieceWrapper>
+~10 days ago wrote my 1st tweet on [mrrartpro.com](http://mrrartpro.com) #buildinpublic<br/>
+Only had a pitch & a [@lmsqueezy](https://twitter.com/@lmsqueezy) pre-order link.
+
+day 1. Pre order #5<br/>
+day 2. Website<br/>
+day 3. PoC<br/>
+day 5. Pre order #20. Develop<br/>
+day 9. Design<br/>
+day 10. Onboarding first beta users to get feedback
+
+What a ride!
+
+![MRRArt Journey 1](/static/images/mrrart-journey-1.jpeg)
+
+![MRRArt Journey 2](/static/images/mrrart-journey-2.jpeg)
+
+![MRRArt Journey 3](/static/images/mrrart-journey-3.jpeg)
+
+![MRRArt Journey 4](/static/images/mrrart-journey-4.jpeg)
+
+</ContentPieceWrapper>
+
+[view source on twitter](https://twitter.com/d4m1n/status/1662877121092501504)
+{end response}
+
+note: retweets are a sum of quotes and retweets
+also note: lines inside <ContentPieceWrapper> should be broken with the <br/> tag if they are not followed by a new line.
+
+also note: for tags, get creative and also include general categories. create at least 10 tags.
+tags should use dashes instead of spaces.
+
+finally, you will write a file name for this content, for example:
+mrrart-pro-building-public-journey.mdx
+
+reply with the file name before any other content.
+make sure to use the correct date. The date is in this format: 2:08 PM · Jun 22, 2023. so for this input, you should use 2023-06-22
+
+got it?

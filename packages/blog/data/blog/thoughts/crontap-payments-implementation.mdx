@@ -1,0 +1,198 @@
+---
+title: 'Implementing LemonSqueezy Payments for Crontap 💰'
+date: '2023-05-11'
+tags:
+  [
+    'Crontap',
+    'payments',
+    'business-progress',
+    'payment-gateway',
+    'development',
+    'lemonsqueezy',
+    'saas',
+    'buildinpublic',
+  ]
+draft: false
+summary: 'Implementing payments for http://crontap.com today or going bust. Gonna use @lmsqueezy & write about my progress in this thread 👇'
+views: 6359
+quotes: 2
+likes: 24
+bookmarks: 8
+---
+
+<ContentPieceWrapper>
+Implementing payments for [Crontap](http://crontap.com) today or going bust.
+
+Gonna use [@lmsqueezy](https://twitter.com/@lmsqueezy) & write about my progress in this thread 👇
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+
+Never used
+[@lmsqueezy](https://twitter.com/@lmsqueezy) before, but had a verified account with them.
+
+Let's see how easy it is to use.
+
+Plan based on quick research:
+
+- create subscription & product
+- use lemon.js to integrate
+- I won't integrate with BE to get this in faster
+- on a successful purchase with lemon.js I'll make an API call from the FE to update status
+- if it goes wrong should be fairly easy to match transaction with account
+- I don't worry about cancelling
+- I will manually handle that until it gets annoying.
+- later I can set up a function that I call daily with [crontap.com](https://crontap.com) to update accounts that cancelled.
+
+Or is there a low effort way to do this?
+Don't want to spend time on it.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+✅ added subscriptions <br/>
+
+Regarding the cancel check above.
+[@marvr\_](https://twitter.com/@marvr_)
+tells me I can use sub ID & look up through the LMSQZY API.
+However I still need a custom cloud function for it because I need to pause running schedules.
+Will for sure postpone this & do manually initially
+
+![lemonsqueezy implementation for crontap](/static/images/lemonsqueezy-implementation-for-crontap.jpeg)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+Found webhook docs thanks to
+[@EyuCoder](https://twitter.com/@EyuCoder)
+
+Looks like the proper long term solution. Will stick to simple for now.
+https://docs.lemonsqueezy.com/api/webhooks
+
+Done with analysis. Let's go implement! 🚀
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+First test purchase
+
+No checks yet.<br/>
+The LemonSqueezy DX was not too great tbh.
+
+Missing React SDK, unclear how you configure lemon.js and how to get the url (share?!)
+
+![lemonsqueezy implementation for crontap](/static/images/lemonsqueezy-implementation-for-crontap-1.jpeg)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+✅ Hooked up to own the db
+
+Still missing:
+
+- UI to show status
+- UI to manage sub (I think I'll just link to LS?)
+
+BUT forgot I was supposed to grab beers in 30 min so I will have to pause until tmrw.
+Feels close, but probably better this way so I can also test it properly.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Note**
+
+Some more feedback for
+[@lmsqueezy](https://twitter.com/@lmsqueezy)
+
+- it should be possible to get custom fields when retrieving a subscription from the API. Is there really no way to get custom fields except for webhooks?!
+
+- would be nice to collapse the "Response" in the API docs. It could be interactive too - allow making requests right in the docs but that's more of a nice to have.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update the next daye**
+
+Back at it now.<br/>
+Wanted to do a simple endpoint to show if you are pro or not. Can't find a way to filter subscriptions by status :(
+
+This will get annoying with users that have a longer history, a simple [status]=active would go a long way.
+
+![lemonsqueezy implementation for crontap](/static/images/lemonsqueezy-implementation-for-crontap-2.jpeg)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+I might be holding this completely wrong.
+But in a SaaS context where it should be easier to get a list of active subscriptions based on SaaS user id (as a custom property).
+
+/api/subscriptions?filter=[custom][user_id]=xxx&filter=[status]=active
+
+💸
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+❌ I have failed
+
+Still going to get it done, but I was lazy and it got the best of me.
+
+So now I understand the only proper way to use this is through webhooks. And avoiding to do that has taken more time than doing it properly.
+
+I'll do webhooks.
+
+[The story continue here where I actually implement the LemonSqueezy integration](/articles/thoughts/crontap-payments-implementation-where-i-actually-finish)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+What happened?
+I thought I can use a simple SDK that handled everything for me. That I didn't need to store anything in my own DB.
+
+That ofc would have coupled me with LS both data & uptime-wise but I was fine with that if it saved me a bunch of dev time.
+
+I had to do it the proper way instead.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+Which is: use webhooks to sync LemonSqueezy order & subscription data with my own DB.
+
+Any clever way to test webhooks locally? Asking for a friend 😞
+
+No? We'll I guess I'll just do it in the blind and deploy. When did that ever go sideways.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+I've dug a hole in my hole.
+Now I am a lot further from where I was last afternoon 🤣
+
+✅ bought a new domain for tunneling<br/>
+✅ set up cloudflare tunnel<br/>
+✅ verified X-Signature hash<br/>
+✅ created TS models for LS webhook evts<br/>
+✅ deleted prev code 😃
+
+tomorrow is another day
+
+</ContentPieceWrapper>
+
+[continue reading](/articles/thoughts/crontap-payments-implementation-where-i-actually-finish)
+
+[view source on twitter](https://twitter.com/d4m1n/status/1656542076799000577)

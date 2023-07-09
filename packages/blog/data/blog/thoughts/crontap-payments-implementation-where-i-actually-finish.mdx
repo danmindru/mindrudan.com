@@ -1,0 +1,151 @@
+---
+title: 'Implementing LemonSqueezy Payments for Crontap (for real) 💰'
+date: '2023-05-17'
+tags:
+  [
+    'Crontap',
+    'integration',
+    'development',
+    'lemonsqueezy',
+    'saas',
+    'buildinpublic',
+    'business-progress',
+    'subscription-model',
+  ]
+draft: false
+summary: "I'm back at the @lmsqueezy 1 day 😂 integration. Let's actually do it this time."
+views: 2120
+retweets: 2
+quotes: 1
+likes: 14
+bookmarks: 3
+---
+
+[previously, I have failed](/articles/thoughts/crontap-payments-implementation)
+
+<ContentPieceWrapper>
+I'm back at the [@lmsqueezy](https://twitter.com/@lmsqueezy) 1-day 😂 integration. In my sleep, I saw that [apihustle.com](http://apihustle.com) will become an international conglomerate with 10s of services in one subscription to rule them all 💍.
+
+Sharing progress as I go
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+Since apihustle will become wildly successful, I should store the payment data in a separate database so I can share subscriptions between services.
+
+So creating an new db in
+[@supabase](https://twitter.com/@supabase)
+to handle that.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+Here's how the infra looks
+
+Crontap Internal API ↔️ Crontap Scheduler<br/>
+↕️<br/>
+Vercel Serverless ↔️ Auth ↔️ Crontap UI
+
+Top part will be unchanged.
+Bottom part will change to have a webhook callback serverless function that stores data to supabase.
+
+LemonSqueezy Subscription Change ➡️ Vercel Webhook Callback ➡️ Supabase
+
+handle a request:
+
+Crontap UI ➡️ Auth ➡️ Vercel Serverless ➡️ Check sub in Supabase
+
+➡️ Crontap API or <br/>
+❌ Deny request
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+Integration with
+[@supabase](https://twitter.com/@supabase)
+done. Now webhooks are all properly handled.
+
+Just need to make a nice reusable check for subscribers.
+
+Thinking:
+
+select \* from subscriptions<br/>
+where user_id=uid<br/>
+and status=active<br/>
+and product_id=id<br/>
+and variants_id in (x,y, z, ...)
+
+Should be good?
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Update**
+
+It works quite quick. Having fun with it :D <br/>
+God
+[@Cloudflare](https://twitter.com/@Cloudflare)
+tunnels are such a marvel.
+
+![lemonsqueezy implementation for crontap](/static/images/lemonsqueezy-implementation-for-crontap-3.png)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+Query above seemed to work fine.
+Made a handy helper to check for subscriptions in any API call.
+
+Gonna update the pricing page, test in prod & release tomorrow.
+
+[see a demo here](https://twitter.com/d4m1n/status/1658865754727383045)
+
+![lemonsqueezy implementation for crontap](/static/images/lemonsqueezy-implementation-for-crontap-4.jpeg)
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+**Now, let's talk about why did I fail in the first place**
+
+What did I want to do?
+
+I wanted to rely on the LemonSqueezy API & do minimum effort to model & store data in my db.
+
+I'd just store the order but wanted to rely on the LS API to get sub statuses & do checks for active subs directly instead of storing this in my own db.
+
+</ContentPieceWrapper>
+
+<ContentPieceWrapper>
+On the flip side once I get the patterns in place it’ll be fairly easy to reproduce in other products UNLESS said products use a different kind of storage.
+
+Still think some sort of “edge” payment integration could make sense.
+I know we’re relatively spoiled complexity-wise these days even though I’m b\*thing about it but hear me out:
+
+- You got your SDK: npm i for framework of choice
+- You pass in a user ID & open a payment modal. Purchase complete.
+- You got your backend SDK. Give it an api key and it can guard cloud functions like auth providers do (see auth0 etc)
+- you have a backend SDK e.g. a withLemons wrapper that reads the user ID via a header. You get active subscriptions.
+
+```js
+export withLemons((req, res) => {
+    const { subscriptions } = useLemons()
+     …
+})
+```
+
+No subscription you get a 404 or whatever and the UI can handle that as it sees fit.
+
+- no dealing with LS customer ids
+- easy to switch env & test
+- no webhooks needed ->
+- no storage of payment data in consumer db needed
+
+Sure that means all is delegated to LS and you have complete trust that they’ll have a good uptime and keep your data safe.
+You probably want to move away from that once you get bigger and ultimately switch to webhook + own DB, but I feel like now this is the only option you have if you don’t wanna resort to hacks.
+
+[@dr](https://twitter.com/@dr) [@gilbitron](https://twitter.com/@gilbitron) [@jrfarr](https://twitter.com/@jrfarr)
+
+</ContentPieceWrapper>
+
+[view source on twitter](https://twitter.com/d4m1n/status/1658747081832448000)
