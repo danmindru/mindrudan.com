@@ -250,6 +250,16 @@ export const Menu = (props) => {
                 Work
               </button>
             </li>
+            <li>
+              <a
+                href="https://blog.mindrudan.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle].join(' ')}
+              >
+                Blog
+              </a>
+            </li>
           </ul>
 
           <ul
@@ -286,6 +296,17 @@ export const Menu = (props) => {
                 className={menuButtonStyle}
               >
                 Crontap
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://mrrartpro.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                MRRArt Pro
               </a>
             </li>
           </ul>

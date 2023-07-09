@@ -139,7 +139,9 @@ const spotifyStyleMenuOpen = css`
 const welcomeMessage = forcedChalk.yellow(
   `\nWelcome to mindrudan.com ${forcedChalk.bold(
     `v${version}`
-  )}  🎩 ✨ \nType ${forcedChalk.bold('man')} to see notes on usage.`
+  )}  🎩 ✨ \nType ${forcedChalk.bold('man')} to see notes on usage.
+    \nFind my thoughts on ${forcedChalk.bold('https://blog.mindrudan.com')}
+`
 ); // TODO: "or man <command>"
 
 const makeRunCommand = (bashmeInstance) => (commandName) => {
