@@ -1,7 +1,6 @@
 import { NewsletterAPI } from 'pliny/newsletter';
 import siteMetadata from '@/data/siteMetadata';
 
-console.log(siteMetadata.newsletter.provider, process.env.BUTTONDOWN_API_KEY);
 export default NewsletterAPI({
   provider: siteMetadata.newsletter.provider,
 });
