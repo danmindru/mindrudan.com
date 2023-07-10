@@ -65,3 +65,7 @@ input:-webkit-autofill:focus {
   mask: url("data:image/svg+xml,%3Csvg width='402' height='202' viewBox='0 0 402 202' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='401' height='201' rx='9.5' /%3E%3C/svg%3E%0A");
   pointer-events: none;
 }
+
+body {
+  overflow-x: hidden;
+}
