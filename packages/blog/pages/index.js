@@ -43,7 +43,7 @@ export default function Home({ posts }) {
                 key={slug}
                 className="fancyGlass group relative flex items-center justify-between gap-1 overflow-hidden rounded-md p-4 shadow-sm transition-shadow duration-1000 hover:shadow-xl sm:p-8"
               >
-                <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white/40 backdrop-blur-lg dark:bg-black/40" />
+                <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white/40 dark:bg-black/40" />
 
                 <SoftBg
                   variant="secondary"

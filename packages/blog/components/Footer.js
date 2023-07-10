@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <SoftBg className="h-[20rem] w-screen" />
+      {/* <SoftBg className="h-[20rem] w-screen" /> */}
     </footer>
   );
 }

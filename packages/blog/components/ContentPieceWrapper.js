@@ -7,7 +7,7 @@ export default function ContentPieceWrapper({ children, link }) {
       className="fancyGlass group relative -mt-4 flex items-center justify-between gap-1 overflow-hidden rounded-md px-4 shadow-sm transition-shadow duration-1000 first:mt-0 first-of-type:p-4 last-of-type:pb-4 hover:shadow-xl sm:px-8
     sm:first-of-type:p-8 sm:last-of-type:pb-8"
     >
-      <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white/40 backdrop-blur-lg dark:bg-black/40" />
+      <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white/40 dark:bg-black/40" />
 
       <SoftBg
         variant="secondary"
