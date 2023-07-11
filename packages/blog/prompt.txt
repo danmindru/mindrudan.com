@@ -48,7 +48,7 @@ title: 'My Building Public Journey with MRRArt Pro! 🚀'
 date: '2023-06-22'
 tags:
   [
-    'MRRArt-Pro',
+    'MRRArt-Pro', 'ASCII', 'ASCII-art', 'unicode',
     'buildinpublic',
     'product-launch',
     'pre-order',
