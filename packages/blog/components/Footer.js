@@ -1,10 +1,11 @@
 import Link from './Link';
 import siteMetadata from '@/data/siteMetadata';
 import SocialIcon from '@/components/social-icons';
-import { SoftBg } from './softBg';
+import { BlurBg } from './blurBg';
+
 export default function Footer() {
   return (
-    <footer className="relative flex min-h-[20rem] flex-col items-center justify-center overflow-hidden md:overflow-visible">
+    <footer className="relative flex min-h-[20rem] flex-col items-center justify-center overflow-x-hidden overflow-y-hidden">
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
           <SocialIcon
@@ -32,7 +33,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* <SoftBg className="h-[20rem] w-screen" /> */}
+      <BlurBg className="absolute -bottom-[25rem] h-[40rem] w-screen" />
     </footer>
   );
 }
