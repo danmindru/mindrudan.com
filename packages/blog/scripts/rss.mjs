@@ -7,6 +7,10 @@ const rss = () => {
     return {
       ...blog,
       path: blog.path.replace('blog/', 'articles/'),
+      _raw: {
+        ...blog._raw,
+        flattenedPath: blog._raw.flattenedPath.replace('blog/', 'articles/'),
+      },
     };
   });
 
