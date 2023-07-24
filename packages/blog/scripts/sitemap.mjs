@@ -6,7 +6,7 @@ const sitemap = () => {
   const mappedBlogs = allBlogs.map((blog) => {
     return {
       ...blog,
-      path: blog.path.replace('/blog', '/articles'),
+      path: blog.path.replace('blog/', 'articles/'),
     };
   });
 
