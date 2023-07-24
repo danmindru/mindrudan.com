@@ -28,7 +28,7 @@ export default function PostLayout({
   children,
 }) {
   const { filePath, path, slug, date, title, tags } = content;
-  const basePath = path.split('/')[0];
+  const basePath = '/';
   const [loadComments, setLoadComments] = useState(false);
   return (
     <SectionContainer>
@@ -156,7 +156,9 @@ export default function PostLayout({
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/articles/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={`/articles/${prev.slug}`}>
+                            {prev.title}
+                          </Link>
                         </div>
                       </div>
                     )}
@@ -166,7 +168,9 @@ export default function PostLayout({
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/articles/${next.slug}`}>{next.title}</Link>
+                          <Link href={`/articles/${next.slug}`}>
+                            {next.title}
+                          </Link>
                         </div>
                       </div>
                     )}
