@@ -145,6 +145,7 @@ const welcomeMessage = forcedChalk.yellow(
 ); // TODO: "or man <command>"
 
 const makeRunCommand = (bashmeInstance) => (commandName) => {
+  commandName = commandName.toLocaleLowerCase(); //Ignore case while running commands
   if (commandName === 'clear') {
     return bashmeInstance.cli.clear();
   }
