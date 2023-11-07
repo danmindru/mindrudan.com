@@ -268,12 +268,12 @@ export const Menu = (props) => {
           >
             <li>
               <a
-                href="https://apihustle.com"
+                href="https://shipixen.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={menuButtonStyle}
               >
-                Apihustle
+                Shipixen
               </a>
             </li>
 
@@ -296,6 +296,17 @@ export const Menu = (props) => {
                 className={menuButtonStyle}
               >
                 Crontap
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://apihustle.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                Apihustle
               </a>
             </li>
 
