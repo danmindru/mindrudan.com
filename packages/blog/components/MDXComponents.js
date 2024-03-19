@@ -6,6 +6,7 @@ import { BlogNewsletterForm } from 'pliny/ui/NewsletterForm';
 import Image from './Image';
 import CustomLink from './Link';
 import ContentPieceWrapper from '@/components/ContentPieceWrapper';
+import { EmbedTweet } from './EmbedTweet';
 
 export const Wrapper = ({ layout, content, ...rest }) => {
   const Layout = require(`../layouts/${layout}`).default;
@@ -19,4 +20,5 @@ export const MDXComponents = {
   wrapper: Wrapper,
   BlogNewsletterForm,
   ContentPieceWrapper,
+  EmbedTweet,
 };

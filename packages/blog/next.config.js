@@ -62,6 +62,7 @@ module.exports = () => {
   return plugins.reduce((acc, next) => next(acc), {
     basePath: '',
     reactStrictMode: true,
+    transpilePackages: ['react-tweet'],
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
       dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],

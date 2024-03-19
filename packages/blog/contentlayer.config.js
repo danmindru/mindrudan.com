@@ -127,6 +127,18 @@ export const Authors = defineDocumentType(() => ({
     layout: {
       type: 'string',
     },
+    views: {
+      type: 'number',
+    },
+    bookmarks: {
+      type: 'number',
+    },
+    retweets: {
+      type: 'number',
+    },
+    likes: {
+      type: 'number',
+    },
   },
   computedFields,
 }));
