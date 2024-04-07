@@ -196,7 +196,7 @@ export default function Home({ posts }) {
             href="https://www.notion.so/d4m1n/My-current-projects-28e9f93353c24aafb13f263d15952ee6"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
           >
-            here
+            in this handy list
           </a>
           ,{' '}
           <a
@@ -214,7 +214,16 @@ export default function Home({ posts }) {
             href="https://linktr.ee/d4m1n"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
           >
-            see more links here
+            see more on Linktree
+          </a>{' '}
+          or{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://bento.me/d4m1n"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+          >
+            Bento
           </a>
           .
         </p>
