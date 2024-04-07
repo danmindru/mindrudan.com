@@ -82,6 +82,21 @@ export const Blog = defineDocumentType(() => ({
         type: 'string',
       },
     },
+    views: {
+      type: 'number',
+    },
+    bookmarks: {
+      type: 'number',
+    },
+    retweets: {
+      type: 'number',
+    },
+    likes: {
+      type: 'number',
+    },
+    quotes: {
+      type: 'number'
+    },
     layout: {
       type: 'string',
     },

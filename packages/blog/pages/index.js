@@ -118,8 +118,110 @@ export default function Home({ posts }) {
           </Link>
         </div>
       )}
+
+      <div className="p-4">
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          I am a builder. I love to design & develop products, apps, be it from
+          the web or otherwise.
+          <br />
+          These are some of the projects I've worked on.
+        </p>
+
+        <ul className="mt-6 grid gap-4 md:grid-cols-2">
+          <li>
+            <a
+              href="https://shipixen.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Shipixen
+            </a>
+            <br />
+            Make customized Next.js boilerplates with a landing page & blog,
+            complete with your own branding, theme, and selected pages.
+          </li>
+
+          <li>
+            <a
+              href="https://clobbr.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Clobbr
+            </a>
+            <br />
+            Find concurrency & performance issues early and ship with more
+            confidence. Clobbr is a developer tool that makes testing your API
+            endpoints a breeze.
+          </li>
+
+          <li>
+            <a
+              href="https://crontap.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Crontap
+            </a>
+            <br />
+            Crontap allows scheduling highly configurable API calls. Integrate
+            it with thousands of apps using Zapier or Make and get notifications
+            in your favorite service, email or via sms.
+          </li>
+
+          <li>
+            <a
+              href="https://morningmakershow.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Morning Maker Show
+            </a>
+            <br />A live show that keeps you up to date with startups, indie
+            makers, products & #buildinpublic
+          </li>
+        </ul>
+
+        <p className="mt-8 text-lg leading-7 text-gray-500 dark:text-gray-400">
+          And a bunch others!
+          <br />
+          Find out more{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.notion.so/d4m1n/My-current-projects-28e9f93353c24aafb13f263d15952ee6"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+          >
+            here
+          </a>
+          ,{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/danmindru"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+          >
+            on Github
+          </a>{' '}
+          or{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://linktr.ee/d4m1n"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+          >
+            see more links here
+          </a>
+          .
+        </p>
+      </div>
+
       {siteMetadata.newsletter.provider && (
-        <div className="flex items-center justify-center pt-4">
+        <div className="mt-4 flex items-center justify-center pt-4">
           <NewsletterForm apiUrl={'/api/newsletter'} />
         </div>
       )}
