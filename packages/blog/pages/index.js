@@ -224,6 +224,15 @@ export default function Home({ posts }) {
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
           >
             Bento
+          </a>{' '}
+          or{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://bio.site/d4m1n"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+          >
+            Bio.site
           </a>
           .
         </p>
