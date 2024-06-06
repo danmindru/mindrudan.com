@@ -144,6 +144,35 @@ export default function Home({ posts }) {
 
           <li>
             <a
+              href="https://pageui.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Page UI
+            </a>
+            <br />
+            Page UI is a collection of landing page UI components for React &
+            Next.js, built on top of TailwindCSS. 100% free and open source.
+          </li>
+
+          <li>
+            <a
+              href="https://tool.crontap.com/cronjob-debugger"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              CronTool
+            </a>
+            <br />
+            With CronTool you can edit, debug and view one or multiple crontab /
+            cron expressions on a calendar - all online & free forever. The last
+            cron expression editor you'll ever need.
+          </li>
+
+          <li>
+            <a
               href="https://clobbr.app"
               target="_blank"
               rel="noopener noreferrer"
