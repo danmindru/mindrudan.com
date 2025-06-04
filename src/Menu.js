@@ -268,6 +268,17 @@ export const Menu = (props) => {
           >
             <li>
               <a
+                href="https://pageai.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={menuButtonStyle}
+              >
+                PageAI
+              </a>
+            </li>
+
+            <li>
+              <a
                 href="https://shipixen.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -307,17 +318,6 @@ export const Menu = (props) => {
                 className={menuButtonStyle}
               >
                 Apihustle
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://mrrartpro.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={menuButtonStyle}
-              >
-                MRRArt Pro
               </a>
             </li>
           </ul>

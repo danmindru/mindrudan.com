@@ -130,6 +130,19 @@ export default function Home({ posts }) {
         <ul className="mt-6 grid gap-4 md:grid-cols-2">
           <li>
             <a
+              href="https://pageai.pro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-semibold"
+            >
+              Page AI
+            </a>
+            <br />
+            Page AI plans designs & creates clean code for your website - just from a prompt. Get a codebase set up as if a human would write it.
+          </li>
+
+          <li>
+            <a
               href="https://shipixen.com"
               target="_blank"
               rel="noopener noreferrer"

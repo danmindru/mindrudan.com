@@ -28,6 +28,18 @@ export default function Footer() {
 
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <ul className="flex gap-2">
+             <li>
+              <a
+                href="https://pageai.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PageAI
+              </a>
+            </li>
+
+            <li>•</li>
+
             <li>
               <a
                 href="https://shipixen.com"
