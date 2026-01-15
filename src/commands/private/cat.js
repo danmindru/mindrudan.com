@@ -18,7 +18,7 @@ export const cat = (
     run: async (args) => {
       if (!args._?.length) {
         return stripIndents`
-          cat: missing operand
+          missing operand
         `;
       }
 

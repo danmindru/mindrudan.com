@@ -18,16 +18,40 @@ import { Clear } from './Clear';
 import { renderCommand } from './utils/renderCommand';
 import { COMMAND_NAMES, EOL } from './commands/command-constants';
 import { whoami } from './commands/whoami';
-import { work } from './commands/work';
+import { crysis } from './commands/crysis';
+import { startups } from './commands/startups';
 import { contact } from './commands/contact';
 import { photo } from './commands/photo-ascii';
 import { vinyl } from './commands/vinyl-ascii';
 import { music } from './commands/music-ascii';
 import { twitter } from './commands/twitter';
+import { x } from './commands/x';
+import { youtube } from './commands/youtube';
+
+// Fun commands
+import { blog } from './commands/blog';
+import { linkedin } from './commands/linkedin';
+import { github } from './commands/github';
+import { sudo } from './commands/sudo';
+import { coffee } from './commands/coffee';
+import { pizza } from './commands/pizza';
+import { hack } from './commands/hack';
+import { matrix } from './commands/matrix';
+import { ship } from './commands/ship';
+import { joke } from './commands/joke';
+import { fortune } from './commands/fortune';
+import { cowsay } from './commands/cowsay';
+import { neofetch } from './commands/neofetch';
+import { skillsCommand } from './commands/skills';
+import { stack } from './commands/stack';
+import { age } from './commands/age';
+import { weather } from './commands/weather';
+import { time } from './commands/time';
+import { hi } from './commands/hi';
+import { exit } from './commands/exit';
 
 import { screensaver } from './commands/private/screensaver';
 import { alex } from './commands/private/alex';
-import { fuck } from './commands/private/fuck';
 import { noWay } from './commands/private/no-way';
 import { ls } from './commands/private/ls';
 import { cat } from './commands/private/cat';
@@ -39,6 +63,32 @@ import { code } from './commands/private/code';
 import { pwd } from './commands/private/pwd';
 import { echo } from './commands/private/echo';
 import { luc } from './commands/private/luc';
+
+import {
+  cd,
+  mkdir,
+  touch,
+  cp,
+  mv,
+  grep,
+  find,
+  chmod,
+  chown,
+  ps,
+  kill,
+  top,
+  df,
+  ssh,
+  curl,
+  wget,
+  ping,
+  brew,
+  git,
+  tail,
+  history,
+} from './commands/private/unix-fake';
+
+import { stripIndents } from 'common-tags';
 
 const mainStyle = css`
   --terminal-padding: 16px;
@@ -283,19 +333,25 @@ export const App = () => {
     });
 
     const commands = [
+      startups(),
       whoami(),
       contact(),
       photo(),
-      work(bashme),
       twitter(),
+      x(),
+      youtube(),
+      blog(),
+      linkedin(),
+      github(),
       {
         name: 'menu',
-        description: 'open the menu.',
+        description: 'open the menu',
         run: () => {
           setOpen(true);
           return '';
         },
       },
+      crysis(bashme),
     ];
 
     bashme.use(new Bashme.GitHub('danmindru'));
@@ -330,12 +386,32 @@ export const App = () => {
         screensaver,
         alex,
         luc,
-        fuck,
         noWay,
         rm,
         code,
         pwd,
         echo,
+        // Fun
+        hi(),
+        coffee(),
+        pizza(),
+        ship(),
+        // Info
+        neofetch(),
+        skillsCommand(),
+        stack(),
+        age(),
+        // Entertainment
+        joke(),
+        fortune(),
+        cowsay(),
+        hack(),
+        matrix(),
+        // Utility
+        weather(),
+        time(),
+        sudo(),
+        exit(),
         ls(bashme),
         cat(bashme),
         nano(
@@ -372,16 +448,68 @@ export const App = () => {
           name: 'favorite',
           description: 'there are many',
           run: (args) => {
+            if (!args._?.length) {
+              return stripIndents`
+                missing arg, try "vinyl" or "food" etc.
+              `;
+            }
+
             if (args._?.includes('vinyl')) {
               setPlaylistUrl(P1);
               playMusic();
               return reverseString(vinyl.run());
             }
+
+            if (args._?.includes('food')) {
+              return stripIndents`
+                Pizza
+              `;
+            }
+
+            if (args._?.includes('movie')) {
+              return stripIndents`
+                Interstellar
+              `;
+            }
+
+            if (args._?.includes('snack')) {
+              return stripIndents`
+                Popcorn
+              `;
+            }
+
+            if (args._?.includes('drink')) {
+              return stripIndents`
+                Gin & Tonic
+              `;
+            }
           },
-          options: ['vinyl'],
+          options: ['vinyl', 'food', 'movie', 'snack', 'drink'],
         },
 
         viExit,
+
+        cd,
+        mkdir,
+        touch,
+        cp,
+        mv,
+        grep,
+        find,
+        chmod,
+        chown,
+        ps,
+        kill,
+        top,
+        df,
+        ssh,
+        curl,
+        wget,
+        ping,
+        brew,
+        git,
+        tail,
+        history,
       ],
     };
 
@@ -405,6 +533,14 @@ export const App = () => {
 
     setBashmeInstance(bashme);
     updateTheme(bashme);
+
+    // Run startups command if URL has #startups
+    if (window.location.hash === '#startups') {
+      setTimeout(() => {
+        bashme.cli.input(`${COMMAND_NAMES.STARTUPS}${EOL}${EOL}`);
+        bashme.cli.processInput();
+      }, 500);
+    }
   }, []);
 
   useEffect(() => {

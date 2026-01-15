@@ -6,8 +6,8 @@ export const alex = {
   description: `important discussion`,
   run: () =>
     forcedChalk.magentaBright(stripIndents`
-      Dan is super cool, but he is on another level of being cool. Someday he'll be as cool as ${forcedChalk.bold(
-        'Alex'
-      )}.
+     ${forcedChalk.bold('Alex')} is cool. Follow on ${forcedChalk.bold(
+      'https://x.com/aliszu'
+    )}
     `),
 };

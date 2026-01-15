@@ -1,0 +1,23 @@
+// Fake Unix commands for fun
+export { cd } from './cd';
+export { mkdir } from './mkdir';
+export { touch } from './touch';
+export { cp } from './cp';
+export { mv } from './mv';
+export { grep } from './grep';
+export { find } from './find';
+export { chmod } from './chmod';
+export { chown } from './chown';
+export { ps } from './ps';
+export { kill } from './kill';
+export { top } from './top';
+export { df } from './df';
+export { ssh } from './ssh';
+export { curl } from './curl';
+export { wget } from './wget';
+export { ping } from './ping';
+export { brew } from './brew';
+export { git } from './git';
+export { tail } from './tail';
+export { history } from './history';
+

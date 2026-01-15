@@ -5,6 +5,7 @@ import { ReactComponent as GithubIcon } from './icons/github-icon.svg';
 import { ReactComponent as StackoverflowIcon } from './icons/stackoverflow-icon.svg';
 import { ReactComponent as TwitterIcon } from './icons/twitter-icon.svg';
 import { ReactComponent as LinkedinIcon } from './icons/linkedin-icon.svg';
+import { ReactComponent as YoutubeIcon } from './icons/youtube-icon.svg';
 import { COMMAND_NAMES } from './commands/command-constants';
 import { wait } from './utils/wait';
 
@@ -177,6 +178,18 @@ const menuToggleStyleOpen = css`
   opacity: 0;
 `;
 
+const backArrowContainerStyle = css`
+  opacity: 0.8;
+`;
+
+const backArrowStyle = css`
+  display: inline-block;
+  font-size: 10px;
+  margin-right: 2px;
+  position: relative;
+  top: -1px;
+`;
+
 export const Menu = (props) => {
   const { open, setOpen, runCommand, musicPlaying, toggleMusic } = props;
 
@@ -189,9 +202,14 @@ export const Menu = (props) => {
     runCommand(COMMAND_NAMES.WHOAMI);
   };
 
-  const workPressed = () => {
+  const startupsPressed = () => {
     setOpen(false);
-    runCommand(COMMAND_NAMES.WORK);
+    runCommand(COMMAND_NAMES.STARTUPS);
+  };
+
+  const crysisPressed = () => {
+    setOpen(false);
+    runCommand(COMMAND_NAMES.CRYSIS);
   };
 
   const contactPressed = () => {
@@ -229,25 +247,15 @@ export const Menu = (props) => {
             )}
             <li>
               <button
-                className={menuButtonStyle}
+                className={[menuButtonStyle, backArrowContainerStyle].join(' ')}
                 onClick={() => setOpen(!open)}
               >
-                Terminal
+                <span className={backArrowStyle}>◀︎</span> Back to DanOS
               </button>
             </li>
             <li>
-              <button onClick={aboutPressed} className={menuButtonStyle}>
-                About
-              </button>
-            </li>
-            <li>
-              <button onClick={contactPressed} className={menuButtonStyle}>
-                Contact
-              </button>
-            </li>
-            <li>
-              <button onClick={workPressed} className={menuButtonStyle}>
-                Work
+              <button onClick={startupsPressed} className={menuButtonStyle}>
+                Startups
               </button>
             </li>
             <li>
@@ -259,6 +267,22 @@ export const Menu = (props) => {
               >
                 Blog
               </a>
+            </li>
+            <li>
+              <button onClick={aboutPressed} className={menuButtonStyle}>
+                About
+              </button>
+            </li>
+            <li>
+              <button onClick={contactPressed} className={menuButtonStyle}>
+                Contact
+              </button>
+            </li>
+
+            <li>
+              <button onClick={crysisPressed} className={menuButtonStyle}>
+                Run Crysis
+              </button>
             </li>
           </ul>
 
@@ -309,17 +333,6 @@ export const Menu = (props) => {
                 Crontap
               </a>
             </li>
-
-            <li>
-              <a
-                href="https://apihustle.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={menuButtonStyle}
-              >
-                Apihustle
-              </a>
-            </li>
           </ul>
 
           <ul
@@ -329,6 +342,16 @@ export const Menu = (props) => {
               menuListSocialStyle,
             ].join(' ')}
           >
+            <li>
+              <a
+                href="https://www.youtube.com/@MorningMakerShow?sub_confirmation=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={[menuButtonStyle, menuButtonStyleWithIcon].join(' ')}
+              >
+                <YoutubeIcon /> YouTube
+              </a>
+            </li>
             <li>
               <a
                 href="https://github.com/danmindru"
