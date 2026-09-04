@@ -22,6 +22,9 @@ export const whoami = () => {
       AdCar on AP News
       https://apnews.com/press-release/ein-presswire-newsmatics/press-release-1c07c836b4a60849ba16e73cf6c7911b
 
+      AdCar on CB Herald
+      https://cbherald.com/2000-in-48-hours-as-adcar-sells-space-on-a-copenhagen-amg/
+
       Saventify on Business Insider
       https://markets.businessinsider.com/news/stocks/saventify-brings-wedding-invitations-and-rsvps-online-in-13-languages-as-couples-plan-across-borders-1036282119
 
